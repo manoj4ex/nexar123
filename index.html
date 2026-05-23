@@ -78,8 +78,11 @@ tailwind.config = {
   html { scroll-behavior: smooth; }
   .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
+  /* Sections that should be hidden on initial landing and revealed when user clicks nav */
+  .deferred { display: none; }
   input:focus, select:focus, textarea:focus { outline: none; border-color: #4893fe !important; box-shadow: 0 0 0 2px rgba(72,147,254,0.2); }
   .nav-link-active { color: #4893fe; border-bottom: 2px solid #4893fe; padding-bottom: 2px; }
+  img[data-fallback-image="true"] { background: #0b1727; object-fit: cover; }
 </style>
 </head>
 <body class="bg-background text-on-surface font-body antialiased">
@@ -224,9 +227,9 @@ tailwind.config = {
 </section>
 
 <!-- ══════════════════════════════════════════
-     CONSULTATION SERVICES
+  CONSULTATION SERVICES
 ══════════════════════════════════════════ -->
-<section id="services" class="bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+<section id="services" data-deferred="true" class="deferred bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
   <div class="circuit-lines absolute inset-0 opacity-5 pointer-events-none"></div>
   <div class="max-w-container-max mx-auto relative z-10">
     <header class="mb-14 flex flex-col md:flex-row justify-between items-end gap-6">
@@ -241,7 +244,7 @@ tailwind.config = {
       <!-- Data Center -->
       <div class="bg-surface-container-lowest rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary-container/30 transition-all fade-up">
         <div class="h-52 overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWNLH_6LriUki2SJD7bkqY-YxIjEeg1pzLP92uPI3YNg8G8u1RSUvVo7rBFOhBUi0bNlAgsSE3GgI2nTxcI9JU6j_YhojVYXn7ONagqSFEB6us_cOOY-VIY_juSfBZCa0yQVG9fcqds9Erp_olpPPhucmP6UeSINoqZ4uqIZ53thEM8hq1US-PRIVqhuuGjazys3mr87hL0Gt0M9exsCKkDsFAK4afpzBJ-_-riGEAaacTqjl467ZIM8tYrlBeDtSt-0jcveJlXdfo"
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWNLH_6LriUki2SJD7bkqY-YxIjEeg1pzLP92uPI3YNg8G8u1RSUvVo7rBFOhBUQDgwqVE-6aMBLYLbQv6i5N5y7bC5SajqSjHPzt8UJUqbZ8a_cOOY-VIY_juSfBZCa0yQVG9fcqds9Erp_olpPPhucmP6UeSINoqZ4uqIZ53thEM8hq1UQDgwqVE-6aMBLYLbQv6i5N5y7bC5SajqSjHPzt8UJUqbZ8a-_-riGEAaacTqjl467ZIM8tYrlBeDtSt-0jcveJlXdfo"
                alt="Data Center Consultation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
         </div>
         <div class="p-8">
@@ -311,9 +314,9 @@ tailwind.config = {
 </section>
 
 <!-- ══════════════════════════════════════════
-     ISO TRAINING
+  ISO TRAINING
 ══════════════════════════════════════════ -->
-<section id="training" class="bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
+<section id="training" data-deferred="true" class="deferred bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
   <div class="max-w-container-max mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
       <div>
@@ -378,9 +381,9 @@ tailwind.config = {
 </section>
 
 <!-- ══════════════════════════════════════════
-     ISO CERTIFICATION
+  ISO CERTIFICATION
 ══════════════════════════════════════════ -->
-<section id="certification" class="bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+<section id="certification" data-deferred="true" class="deferred bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
   <div class="circuit-lines absolute inset-0 opacity-5 pointer-events-none"></div>
   <div class="max-w-container-max mx-auto relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
@@ -443,9 +446,9 @@ tailwind.config = {
 </section>
 
 <!-- ══════════════════════════════════════════
-     DATA CENTER PRODUCTS
+  DATA CENTER PRODUCTS
 ══════════════════════════════════════════ -->
-<section id="products" class="bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
+<section id="products" data-deferred="true" class="deferred bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
   <div class="max-w-container-max mx-auto">
     <header class="mb-14">
       <span class="inline-block bg-secondary/10 text-secondary font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Products</span>
@@ -456,7 +459,7 @@ tailwind.config = {
       <!-- UPS -->
       <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up">
         <div class="h-56 overflow-hidden bg-primary-container relative">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTl-5_R7g6-kp0vcmHrHQLgGoAosWjnFgEjUr6uN7DboL6eauEw3cZvHgTN4YMeOFPQmqZhb3dWlh-t0T8n7H2kqlUBLX0VT5l1apCx-F-uWOk_VWnqfwk1hB35vfIebADKnY28wTWUPRGupHPfmiaN9XbtHqGoSzowMts5scEY2d7W6N_O1CS_KPH_owvMZcHqvAUERdvpfRgMujnmes1UlrBFfYYjEgWJ6MYSi107lHL8XECANO1ROjLr8QtZhmkS5wVAkp5WLgJ"
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTl-5_R7g6-kp0vcmHrHQLgGoAosWjnFgEjUr6uN7DboL6eauEw3cZvHgTN4YMeOFPQmqZhb3dWlh-t0T8n7H2kqlUBLX0VT5l1apCx-F-uWOk_VWnqfwk1hB35vfIebADKnYCcijrCfZBuqDzBWp3qSrBEZCqBUfQVz4CWGHWF91iaEw_O1CS_KPH_owvMZcHqvAUERdvpfRgMujnmes1UlrBFfYYjEgWJ6MYSi107lHL8XECANO1ROjLr8QtZhmkS5wVAkp5WLgJ"
                alt="Enterprise UPS Unit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute top-3 right-3 bg-primary-container/80 text-secondary-container font-headline text-xs font-bold px-2 py-1 rounded">UPS</div>
         </div>
@@ -474,7 +477,8 @@ tailwind.config = {
       <!-- PAC -->
       <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up" style="transition-delay:80ms">
         <div class="h-56 overflow-hidden relative">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCubw2LdH7vf-OAm_az_ZosBy7YIRV54oTVwfmUL_3mEsc7-n_vVgSGZh4w2fceWARYSGbaJbKLwBh1ZkAkFP2rNYSGHtoUw-7aV3sUGFR4FKYfPJMH0wSHjgf_hlOt6RebjgnjJtxtVwbxyADZXwPjqIjd9t5Tj1jF95GV9_YTe9lTmtqf8kQiu3Z8PygMi2Typ6Lsdu12okQdacQlP3Lmc9Wxwq7Veyvr7qXmt3qwKimr3X4hj5oW_bf-11vxUNnyAOOcutAFLv4A"
+           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCubw2LdH7vf-OAm_az_ZosBy7YIRV54oTVwfmUL_3mEsc7-n_vVCcijrCfZBuqDzBWp3qSrBEZCqBUfQVz4CWGHWF91iaEw-7aV3sUGFR4FKYfPJMH0wSHjgf_hlOt6RebjgnjJtxtVwbxyADZXwPjqIjd9t5Tj1jF95GV9_YTe9lTmtqf8kQiu3Z8PygMi2Typ6Lsdu12okQdacQlP3LUjsiSbqDSPqS8snZgD5YgyCGb4G5sdWRj_bf-11vxUNnyAOOcutAFLv4A"
+    
                alt="Precision Air Conditioning PAC Unit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute top-3 right-3 bg-primary-container/80 text-secondary-container font-headline text-xs font-bold px-2 py-1 rounded">PAC</div>
         </div>
@@ -513,9 +517,9 @@ tailwind.config = {
 </section>
 
 <!-- ══════════════════════════════════════════
-     SOFTWARE SERVICES
+  SOFTWARE SERVICES
 ══════════════════════════════════════════ -->
-<section id="software" class="bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+<section id="software" data-deferred="true" class="deferred bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
   <div class="circuit-lines absolute inset-0 opacity-5 pointer-events-none"></div>
   <div class="max-w-container-max mx-auto relative z-10">
     <header class="mb-16">
@@ -567,9 +571,9 @@ tailwind.config = {
 </section>
 
 <!-- ══════════════════════════════════════════
-     CLOUD SERVICES
+  CLOUD SERVICES
 ══════════════════════════════════════════ -->
-<section id="cloud" class="bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
+<section id="cloud" data-deferred="true" class="deferred bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
   <div class="max-w-container-max mx-auto">
     <header class="mb-14">
       <span class="inline-block bg-secondary/10 text-secondary font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Cloud Services</span>
@@ -601,7 +605,7 @@ tailwind.config = {
       <!-- Local Cloud -->
       <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up" style="transition-delay:80ms">
         <div class="h-48 overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiYG4eZ0l0iXLMNJTnO1VjCDaDw9bvvH6-zsXyRRDDDXRSHnNpztKufW3y-sGbDseS6P1pHnOJG8Tm8QCO6Evw-5kz-sbHSdLin33u8M7jwEnQ8pCEPOvLasgTt54A23_oSi5GNHbds4LkrXbI1V-CGXFCe5YA6JYTgKYAAxoiE8kXjgBizvAXYzYsoEjU2XArdu6I2NJt-WdHeKR_Mr_CiJ9F76ZgJ9xn2CjLX8w8fmNa5UUWA8m8f3HBFs7ji2Q86bUHJqykRHft"
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiYG4eZ0l0iXLMNJTnO1VjCDaDw9bvvH6-zsXyRRDDDXRSHnNpztKufW3y-sGbDseS6P1pHnOJG8Tm8QCO6Evw-5kz-sbHSdLin33u8M7jwEnQ8pCEPOvLasgTt54A23_oSi5GNHbds4LkrXbI1V-CGXFCe5YA6JYTgKYAAxoiE8kXjgBizvAXYzYsoEjU2XArdu6I2NJt-WdHeKR_Mr_CiJ9F76ZgJ9xnCcijrCfZBuqDzBWp3qSrBEZCqBUfQVz4CWGHWF91iaEw"
                alt="Nepal Local Cloud Infrastructure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
         </div>
         <div class="p-7">
@@ -680,26 +684,26 @@ tailwind.config = {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Organization Name <span class="text-tertiary-fixed-dim">*</span></label>
-              <input id="f_org" type="text" placeholder="e.g. ABC Pvt. Ltd." required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+              <input id="f_org" type="text" placeholder="e.g. ABC Pvt. Ltd." required class="w-full bg-white border border-white/20 rounded-lg px-4 py-3 text-on-surface placeholder-on-surface-variant/50 text-sm transition-colors">
             </div>
             <div>
               <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Contact Person <span class="text-tertiary-fixed-dim">*</span></label>
-              <input id="f_contact" type="text" placeholder="Full name" required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+              <input id="f_contact" type="text" placeholder="Full name" required class="w-full bg-white border border-white/20 rounded-lg px-4 py-3 text-on-surface placeholder-on-surface-variant/50 text-sm transition-colors">
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Email Address <span class="text-tertiary-fixed-dim">*</span></label>
-              <input id="f_email" type="email" placeholder="you@company.com" required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+              <input id="f_email" type="email" placeholder="you@company.com" required class="w-full bg-white border border-white/20 rounded-lg px-4 py-3 text-on-surface placeholder-on-surface-variant/50 text-sm transition-colors">
             </div>
             <div>
               <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Phone Number</label>
-              <input id="f_phone" type="tel" placeholder="+977-98XXXXXXXX" class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+              <input id="f_phone" type="tel" placeholder="+977-98XXXXXXXX" class="w-full bg-white border border-white/20 rounded-lg px-4 py-3 text-on-surface placeholder-on-surface-variant/50 text-sm transition-colors">
             </div>
           </div>
           <div class="mb-4">
             <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Subject <span class="text-tertiary-fixed-dim">*</span></label>
-            <select id="f_subject" required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white text-sm transition-colors cursor-pointer appearance-none" style="background-color: #101c2e;">
+            <select id="f_subject" required class="w-full bg-white border border-white/20 rounded-lg px-4 py-3 text-on-surface text-sm transition-colors cursor-pointer appearance-none" style="background-color: #ffffff; color: #191c1f;">
               <option value="">— Select a subject —</option>
               <optgroup label="Consultation">
                 <option>Data Center Consultation</option>
@@ -732,7 +736,7 @@ tailwind.config = {
           </div>
           <div class="mb-6">
             <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Message <span class="text-tertiary-fixed-dim">*</span></label>
-            <textarea id="f_message" rows="4" required placeholder="Describe your requirement or issue in detail..." class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm resize-y transition-colors"></textarea>
+            <textarea id="f_message" rows="4" required placeholder="Describe your requirement or issue in detail..." class="w-full bg-white border border-white/20 rounded-lg px-4 py-3 text-on-surface placeholder-on-surface-variant/50 text-sm resize-y transition-colors"></textarea>
           </div>
           <input type="hidden" id="f_type" value="general">
           <div class="flex items-center justify-between flex-wrap gap-4">
@@ -750,9 +754,30 @@ tailwind.config = {
       </div>
       <!-- Info Cards -->
       <div class="flex flex-col gap-4">
-        <div class="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
-          <span class="material-symbols-outlined text-secondary-container text-2xl">mail</span>
-          <div><p class="text-sm font-semibold text-surface-container-lowest mb-1">Email us directly</p><a href="mailto:info@nexar.com.np" class="text-secondary-container text-sm hover:underline">info@nexar.com.np</a></div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-secondary-container text-2xl">contact_support</span>
+            <div>
+              <p class="text-sm font-semibold text-surface-container-lowest mb-1">Contact Us</p>
+              <div class="text-sm flex flex-col gap-2">
+                <a href="mailto:info@nexar.com.np" class="flex items-center gap-2 text-secondary-container hover:underline">
+                  <span class="material-symbols-outlined">mail</span>
+                  <span>info@nexar.com.np</span>
+                </a>
+                <a href="tel:+9779816749049" class="flex items-center gap-2 text-on-primary-container">
+                  <span class="material-symbols-outlined">call</span>
+                  <span>Call us: +977-9816749049</span>
+                </a>
+                <a href="https://wa.me/9779816749049" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-on-primary-container">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+                    <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.373 0 .006 5.373 0 12c0 2.115.555 4.184 1.606 6.026L0 24l6.182-1.548A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.214-1.255-6.233-3.48-8.52z" fill="#25D366"/>
+                    <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.273-.099-.472-.148-.672.149-.199.297-.768.967-.942 1.165-.173.198-.346.223-.643.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.058-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.173.198-.297.298-.495.099-.198.05-.371-.025-.52-.074-.148-.672-1.617-.92-2.219-.242-.582-.487-.503-.672-.513l-.573-.01c-.199 0-.52.074-.792.371s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487  .709.306 1.262.489 1.695.627.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/>
+                  </svg>
+                  <span>+977-9816749049</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
           <span class="material-symbols-outlined text-secondary-container text-2xl">schedule</span>
@@ -835,6 +860,48 @@ tailwind.config = {
 </footer>
 
 <script>
+// Broken remote image fallback
+function fallbackImageSrc(label) {
+  const safeLabel = String(label || 'Nexar Point').replace(/[<>&"]/g, '');
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#081426"/>
+          <stop offset="0.55" stop-color="#0e2238"/>
+          <stop offset="1" stop-color="#123e6c"/>
+        </linearGradient>
+        <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+          <path d="M56 0H0V56" fill="none" stroke="#4893fe" stroke-opacity="0.16" stroke-width="2"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="760" fill="url(#bg)"/>
+      <rect width="1200" height="760" fill="url(#grid)"/>
+      <circle cx="930" cy="160" r="220" fill="#4893fe" opacity="0.16"/>
+      <circle cx="170" cy="610" r="260" fill="#8fc5ff" opacity="0.12"/>
+      <g fill="none" stroke="#8fc5ff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+        <rect x="230" y="250" width="210" height="150" rx="18"/>
+        <path d="M285 465h455M335 400v65M390 400v65M590 250v215M690 250v215M230 325H120M440 325h125M740 325h340"/>
+        <circle cx="120" cy="325" r="26"/>
+        <circle cx="1080" cy="325" r="26"/>
+      </g>
+      <text x="90" y="620" fill="#ffffff" font-family="Arial, sans-serif" font-size="54" font-weight="700">${safeLabel}</text>
+      <text x="92" y="675" fill="#9cc9ff" font-family="Arial, sans-serif" font-size="26" font-weight="600">NEXAR POINT</text>
+    </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function applyImageFallback(img) {
+  if (img.dataset.fallbackImage === 'true') return;
+  img.dataset.fallbackImage = 'true';
+  img.src = fallbackImageSrc(img.alt);
+}
+
+document.querySelectorAll('img').forEach((img) => {
+  img.addEventListener('error', () => applyImageFallback(img));
+  if (img.complete && img.naturalWidth === 0) applyImageFallback(img);
+});
+
 // Navbar scroll shadow
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.35)' : '';
@@ -851,8 +918,36 @@ document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('clic
 // Smooth scroll with offset
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' }); }
+    const href = a.getAttribute('href');
+    // ignore empty/hash-only links
+    if (!href || href === '#') return;
+    const t = document.querySelector(href);
+    if (t) {
+      e.preventDefault();
+      // When a top-nav item is clicked we want ONLY:
+      // - the target section (e.g. services/training/certification/products/cloud/about)
+      // - the inquiry section
+      // All other main sections should be hidden so the page shows only the selected content + inquiry + footer.
+      const mainSections = Array.from(document.querySelectorAll('main > section'));
+      mainSections.forEach(s => {
+        const keep = (s === t) || (s.id === 'inquiry');
+        if (keep) {
+          s.style.display = '';
+          s.classList.remove('deferred');
+          if (s.dataset) s.dataset.deferred = 'false';
+          if (typeof obs !== 'undefined') {
+            s.querySelectorAll('.fade-up').forEach(el => { try { obs.observe(el); } catch (err) {} });
+          }
+        } else {
+          s.style.display = 'none';
+          s.classList.add('deferred');
+          if (s.dataset) s.dataset.deferred = 'true';
+        }
+      });
+
+      // Scroll to the target (offset for fixed navbar)
+      window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' });
+    }
   });
 });
 
@@ -912,11 +1007,13 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
   try {
     const res = await fetch('/api/inquiry', { method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ org, contact, email, phone, subject, message, type, tag: tags[type]||'[INQUIRY]' }) });
+    const data = await res.json().catch(() => ({}));
     if (res.ok) { okEl.classList.remove('hidden'); this.reset(); }
-    else throw new Error();
-  } catch {
+    else throw new Error(data.error || 'Failed to send inquiry.');
+  } catch (error) { 
     // Demo mode — show success even without backend
-    okEl.classList.remove('hidden'); this.reset();
+    errEl.textContent = error.message || 'Could not send inquiry. Please try again or email info@nexar.com.np directly.';
+    errEl.classList.remove('hidden');
   } finally {
     btn.disabled = false;
     btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">send</span> Submit Inquiry';
@@ -924,4 +1021,4 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
 });
 </script>
 </body>
-</html>
+</html> 

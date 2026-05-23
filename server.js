@@ -1,173 +1,561 @@
-/**
- * NEXAR POINT — BACKEND EMAIL SERVER
+**
+ * NEXAR POINT — BACKEND EMAIL SERVER (DARK THEME)
  * Node.js + Express + Nodemailer
  *
  * Setup:
  *   npm install express nodemailer cors dotenv
  *   node server.js
  *
- * .env file (create in same folder):
- *   MAIL_HOST=mail.nexar.com.np
+ * .env file:
+ *   MAIL_HOST=smtp.gmail.com
  *   MAIL_PORT=587
- *   MAIL_USER=info@nexar.com.np
- *   MAIL_PASS=your_email_password
+ *   MAIL_USER=sah.manoj2022@gmail.com
+ *   MAIL_PASS=your_gmail_app_password
+ *   MAIL_TO=info@nexar.com.np
  *   PORT=3000
  */
 
 require('dotenv').config();
-const express    = require('express');
-const nodemailer = require('nodemailer');
-const cors       = require('cors');
 
-const app  = express();
+const express = require('express');
+const nodemailer = require('nodemailer');
+const cors = require('cors');
+
+const app = express();
 const PORT = process.env.PORT || 3000;
+const MAIL_TO = process.env.MAIL_TO || process.env.MAIL_USER || 'info@nexar.com.np';
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static('.')); // Serve the HTML/CSS/JS files
+app.use(express.static('.'));
 
-// Email transporter
+// ---------------- EMAIL TRANSPORTER ----------------
 const transporter = nodemailer.createTransport({
-  host:   process.env.MAIL_HOST || 'mail.nexar.com.np',
-  port:   parseInt(process.env.MAIL_PORT) || 587,
-  secure: false, // true for port 465
+  host: process.env.MAIL_HOST || 'smtp.gmail.com',
+  port: parseInt(process.env.MAIL_PORT) || 587,
+  secure: false,
   auth: {
-    user: process.env.MAIL_USER || 'info@nexar.com.np',
+    user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS
   }
 });
 
-// ---- INQUIRY ENDPOINT ----
+// ---------------- INQUIRY ENDPOINT ----------------
 app.post('/api/inquiry', async (req, res) => {
-  const { org, contact, email, phone, subject, message, type, tag } = req.body;
+  if (!process.env.MAIL_USER || !process.env.MAIL_PASS || process.env.MAIL_PASS === 'YOUR_PASSWORD' || process.env.MAIL_PASS === 'YOUR_GMAIL_APP_PASSWORD') {
+    return res.status(500).json({
+      error: 'Email is not configured. Set MAIL_USER and a real Gmail app password in MAIL_PASS, then restart the server.'
+    });
+  }
 
-  // Basic server-side validation
+  const {
+    org,
+    contact,
+    email,
+    phone,
+    subject,
+    message,
+    type,
+    tag
+  } = req.body;
+
+  // ---------------- VALIDATION ----------------
   if (!org || !contact || !email || !subject || !message) {
-    return res.status(400).json({ error: 'Missing required fields.' });
+    return res.status(400).json({
+      error: 'Missing required fields.'
+    });
   }
+
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   if (!emailRe.test(email)) {
-    return res.status(400).json({ error: 'Invalid email address.' });
+    return res.status(400).json({
+      error: 'Invalid email address.'
+    });
   }
 
-  const typeLabel = { general: 'General Inquiry', support: 'Technical Support', quote: 'Quote Request' };
-  const typeText  = typeLabel[type] || 'Inquiry';
+  const typeLabel = {
+    general: 'General Inquiry',
+    support: 'Technical Support',
+    quote: 'Quote Request'
+  };
 
-  // Email to Nexar Point team
+  const typeText = typeLabel[type] || 'Inquiry';
+  const inquiryTag = tag || '[INQUIRY]';
+
+  // =========================================================
+  // INTERNAL EMAIL TO NEXAR TEAM
+  // =========================================================
+
   const internalMail = {
-    from:    `"Nexar Point Website" <${process.env.MAIL_USER}>`,
-    to:      'info@nexar.com.np',
+    from: `"Nexar Point Website" <${process.env.MAIL_USER}>`,
+    to: MAIL_TO,
     replyTo: email,
-    subject: `${tag} ${subject} — ${org}`,
+    subject: `${inquiryTag} ${subject} — ${org}`,
+
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #0A1628; padding: 24px 32px; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; font-size: 20px; margin: 0;">
-            <span style="color: #0E6FD8;">NEXAR</span><span style="font-weight: 300;">POINT</span>
-            &nbsp; New ${typeText}
+   
+    <div style="
+      font-family: Arial, sans-serif;
+      background: #000000;
+      padding: 40px 20px;
+      color: #ffffff;
+    ">
+
+      <div style="
+        max-width: 650px;
+        margin: 0 auto;
+        background: #0b0b0b;
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+        overflow: hidden;
+      ">
+
+        <!-- HEADER -->
+        <div style="
+          background: #050505;
+          padding: 28px 32px;
+          border-bottom: 1px solid #1f2937;
+        ">
+          <h1 style="
+            margin: 0;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+          ">
+            <span style="color:#0E6FD8;">NEXAR</span>
+            <span style="font-weight:300;">POINT</span>
           </h1>
+
+          <p style="
+            margin-top: 10px;
+            color: #9CA3AF;
+            font-size: 14px;
+          ">
+            New ${typeText} Received
+          </p>
         </div>
-        <div style="background: #f8f9fc; padding: 32px; border: 1px solid #e2e6ef;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+
+        <!-- BODY -->
+        <div style="
+          padding: 32px;
+          background: #000000;
+        ">
+
+          <table style="
+            width: 100%;
+            border-collapse: collapse;
+          ">
+
             <tr>
-              <td style="padding: 10px 0; color: #5A6378; font-weight: 600; width: 160px; border-bottom: 1px solid #e2e6ef;">Organization</td>
-              <td style="padding: 10px 0; color: #2C3347; border-bottom: 1px solid #e2e6ef;"><strong>${org}</strong></td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #5A6378; font-weight: 600; border-bottom: 1px solid #e2e6ef;">Contact Person</td>
-              <td style="padding: 10px 0; color: #2C3347; border-bottom: 1px solid #e2e6ef;">${contact}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #5A6378; font-weight: 600; border-bottom: 1px solid #e2e6ef;">Email</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #e2e6ef;"><a href="mailto:${email}" style="color: #0E6FD8;">${email}</a></td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #5A6378; font-weight: 600; border-bottom: 1px solid #e2e6ef;">Phone</td>
-              <td style="padding: 10px 0; color: #2C3347; border-bottom: 1px solid #e2e6ef;">${phone || 'Not provided'}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #5A6378; font-weight: 600; border-bottom: 1px solid #e2e6ef;">Inquiry Type</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #e2e6ef;">
-                <span style="background: #0E6FD8; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 700;">${tag}</span>
+              <td style="
+                padding: 14px 0;
+                color:rgb(18, 19, 21);
+                width: 180px;
+                border-bottom: 1px solid #1f2937;
+                font-weight: 600;
+              ">
+                Organization
+              </td>
+
+              <td style="
+                padding: 14px 0;
+                color:rgba(1, 0, 0, 0.2);
+                border-bottom: 1px solid #1f2937;
+              ">
+                <strong>${org}</strong>
               </td>
             </tr>
+
             <tr>
-              <td style="padding: 10px 0; color: #5A6378; font-weight: 600; border-bottom: 1px solid #e2e6ef;">Subject</td>
-              <td style="padding: 10px 0; color: #2C3347; border-bottom: 1px solid #e2e6ef;">${subject}</td>
+              <td style="
+                padding: 14px 0;
+                color: #9CA3AF;
+                border-bottom: 1px solid #1f2937;
+                font-weight: 600;
+              ">
+                Contact Person
+              </td>
+
+              <td style="
+                padding: 14px 0;
+                color: #ffffff;
+                border-bottom: 1px solid #1f2937;
+              ">
+                ${contact}
+              </td>
             </tr>
+
+            <tr>
+              <td style="
+                padding: 14px 0;
+                color:rgb(0, 0, 0);
+                border-bottom: 1px solid #1f2937;
+                font-weight: 600;
+              ">
+                Email
+              </td>
+
+              <td style="
+                padding: 14px 0;
+                border-bottom: 1px solid #1f2937;
+              ">
+                <a href="mailto:${email}" style="
+                  color: #0E6FD8;
+                  text-decoration: none;
+                ">
+                  ${email}
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="
+                padding: 14px 0;
+                color: #9CA3AF;
+                border-bottom: 1px solid #1f2937;
+                font-weight: 600;
+              ">
+                Phone
+              </td>
+
+              <td style="
+                padding: 14px 0;
+                color: #ffffff;
+                border-bottom: 1px solid #1f2937;
+              ">
+                ${phone || 'Not provided'}
+              </td>
+            </tr>
+
+            <tr>
+              <td style="
+                padding: 14px 0;
+                color: #9CA3AF;
+                border-bottom: 1px solid #1f2937;
+                font-weight: 600;
+              ">
+                Inquiry Type
+              </td>
+
+              <td style="
+                padding: 14px 0;
+                border-bottom: 1px solid #1f2937;
+              ">
+                <span style="
+                  background: #0E6FD8;
+                  color: #ffffff;
+                  padding: 5px 12px;
+                  border-radius: 5px;
+                  font-size: 12px;
+                  font-weight: 700;
+                ">
+                  ${inquiryTag}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="
+                padding: 14px 0;
+                color: #9CA3AF;
+                border-bottom: 1px solid #1f2937;
+                font-weight: 600;
+              ">
+                Subject
+              </td>
+
+              <td style="
+                padding: 14px 0;
+                color: #ffffff;
+                border-bottom: 1px solid #1f2937;
+              ">
+                ${subject}
+              </td>
+            </tr>
+
           </table>
-          <div style="margin-top: 24px;">
-            <p style="font-size: 12px; color: #5A6378; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Message</p>
-            <div style="background: #ffffff; border: 1px solid #e2e6ef; border-radius: 6px; padding: 16px 20px; color: #2C3347; font-size: 14px; line-height: 1.75; white-space: pre-wrap;">${message}</div>
+
+          <!-- MESSAGE -->
+          <div style="margin-top: 28px;">
+
+            <p style="
+              color: #9CA3AF;
+              font-size: 12px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin-bottom: 10px;
+              font-weight: 700;
+            ">
+              Message
+            </p>
+
+            <div style="
+              background: #111827;
+              border: 1px solid #374151;
+              border-radius: 8px;
+              padding: 18px 20px;
+              color: #ffffff;
+              font-size: 14px;
+              line-height: 1.8;
+              white-space: pre-wrap;
+            ">
+              ${message}
+            </div>
+
           </div>
-          <div style="margin-top: 24px; padding: 14px 20px; background: #E6F1FB; border-radius: 6px; border-left: 3px solid #0E6FD8;">
-            <p style="font-size: 13px; color: #0C447C; margin: 0;">
-              Reply directly to this email to respond to <strong>${contact}</strong> at ${org}.
+
+          <!-- REPLY NOTICE -->
+          <div style="
+            margin-top: 28px;
+            background: #071425;
+            border-left: 4px solid #0E6FD8;
+            padding: 18px 20px;
+            border-radius: 8px;
+          ">
+            <p style="
+              margin: 0;
+              color: #d1d5db;
+              font-size: 14px;
+              line-height: 1.7;
+            ">
+              Reply directly to this email to respond to
+              <strong>${contact}</strong> from
+              <strong>${org}</strong>.
             </p>
           </div>
+
         </div>
-        <div style="background: #0A1628; padding: 16px 32px; border-radius: 0 0 8px 8px;">
-          <p style="color: #5A6378; font-size: 12px; margin: 0;">
-            Submitted via nexarpoint.com.np website &nbsp;|&nbsp; Routed to info@nexar.com.np
+
+        <!-- FOOTER -->
+        <div style="
+          background: #050505;
+          border-top: 1px solid #1f2937;
+          padding: 18px 32px;
+        ">
+          <p style="
+            margin: 0;
+            color: #6b7280;
+            font-size: 12px;
+            text-align: center;
+          ">
+            Submitted via nexarpoint.com.np
           </p>
         </div>
+
       </div>
+
+    </div>
     `
   };
 
-  // Auto-reply to sender
+  // =========================================================
+  // AUTO REPLY EMAIL
+  // =========================================================
+
   const autoReply = {
-    from:    `"Nexar Point Pvt. Ltd." <${process.env.MAIL_USER}>`,
-    to:      email,
+    from: `"Nexar Point Pvt. Ltd." <${process.env.MAIL_USER}>`,
+    to: email,
     subject: `We received your inquiry — Nexar Point`,
+
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #0A1628; padding: 24px 32px; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; font-size: 20px; margin: 0;">
-            <span style="color: #0E6FD8;">NEXAR</span><span style="font-weight: 300;">POINT</span> Pvt. Ltd.
+
+    <div style="
+      font-family: Arial, sans-serif;
+      background: #000000;
+      padding: 40px 20px;
+      color: #ffffff;
+    ">
+
+      <div style="
+        max-width: 650px;
+        margin: 0 auto;
+        background: #0b0b0b;
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+        overflow: hidden;
+      ">
+
+        <!-- HEADER -->
+        <div style="
+          background: #050505;
+          padding: 30px 32px;
+          border-bottom: 1px solid #1f2937;
+        ">
+
+          <h1 style="
+            color: #ffffff;
+            margin: 0;
+            font-size: 24px;
+          ">
+            <span style="color:#0E6FD8;">NEXAR</span>
+            <span style="font-weight:300;">POINT</span>
           </h1>
+
         </div>
-        <div style="padding: 32px; background: #ffffff; border: 1px solid #e2e6ef;">
-          <p style="font-size: 16px; color: #2C3347; margin-bottom: 16px;">Dear <strong>${contact}</strong>,</p>
-          <p style="color: #5A6378; line-height: 1.75; margin-bottom: 16px;">
-            Thank you for reaching out to Nexar Point. We have received your inquiry regarding
-            <strong style="color: #0A1628;">${subject}</strong> from <strong style="color: #0A1628;">${org}</strong>.
+
+        <!-- BODY -->
+        <div style="
+          padding: 32px;
+          background: #000000;
+        ">
+
+          <p style="
+            color: #ffffff;
+            font-size: 16px;
+            margin-bottom: 18px;
+          ">
+            Dear <strong>${contact}</strong>,
           </p>
-          <p style="color: #5A6378; line-height: 1.75; margin-bottom: 24px;">
-            Our team will review your message and respond within <strong style="color: #0A1628;">1 business day</strong>
-            (Sunday–Friday, 9:00am–6:00pm NPT). For urgent matters, you can reach us directly at
-            <a href="mailto:info@nexar.com.np" style="color: #0E6FD8;">info@nexar.com.np</a>.
+
+          <p style="
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 15px;
+          ">
+            Thank you for contacting Nexar Point.
+            We have successfully received your inquiry regarding
+            <strong style="color:#ffffff;">${subject}</strong>
+            from
+            <strong style="color:#ffffff;">${org}</strong>.
           </p>
-          <div style="background: #f8f9fc; border-radius: 6px; padding: 16px 20px; margin-bottom: 24px;">
-            <p style="font-size: 12px; color: #9AA3B8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;">Your inquiry reference</p>
-            <p style="color: #2C3347; font-size: 14px; margin: 0;"><strong>Subject:</strong> ${subject}</p>
-            <p style="color: #2C3347; font-size: 14px; margin: 4px 0 0;"><strong>Type:</strong> ${typeText}</p>
+
+          <p style="
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 28px;
+            font-size: 15px;
+          ">
+            Our team will review your message and respond within
+            <strong style="color:#ffffff;">1 business day</strong>.
+            For urgent matters, please contact us directly at
+            <a href="mailto:info@nexar.com.np" style="
+              color:#0E6FD8;
+              text-decoration:none;
+            ">
+              info@nexar.com.np
+            </a>
+          </p>
+
+          <!-- SUMMARY BOX -->
+          <div style="
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 20px;
+          ">
+
+            <p style="
+              margin-top: 0;
+              margin-bottom: 12px;
+              color: #9CA3AF;
+              font-size: 12px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              font-weight: 700;
+            ">
+              Inquiry Summary
+            </p>
+
+            <p style="
+              color: #ffffff;
+              margin: 0 0 10px;
+              font-size: 14px;
+            ">
+              <strong>Subject:</strong> ${subject}
+            </p>
+
+            <p style="
+              color: #ffffff;
+              margin: 0;
+              font-size: 14px;
+            ">
+              <strong>Type:</strong> ${typeText}
+            </p>
+
           </div>
-          <p style="color: #9AA3B8; font-size: 13px;">
-            Warm regards,<br>
-            <strong style="color: #2C3347;">Nexar Point Team</strong><br>
-            Lalitpur, Nepal &nbsp;|&nbsp; info@nexar.com.np
-          </p>
+
+          <!-- SIGNATURE -->
+          <div style="margin-top: 32px;">
+
+            <p style="
+              color: #9CA3AF;
+              font-size: 14px;
+              line-height: 1.8;
+              margin: 0;
+            ">
+              Warm regards,
+            </p>
+
+            <p style="
+              color: #ffffff;
+              font-size: 15px;
+              margin-top: 8px;
+              line-height: 1.8;
+            ">
+              <strong>Nexar Point Team</strong><br>
+              Lalitpur, Nepal<br>
+              info@nexar.com.np
+            </p>
+
+          </div>
+
         </div>
-        <div style="background: #0A1628; padding: 16px 32px; border-radius: 0 0 8px 8px;">
-          <p style="color: #5A6378; font-size: 12px; margin: 0;">
-            © 2025 Nexar Point Pvt. Ltd. All rights reserved. &nbsp;|&nbsp; Lalitpur, Nepal
+
+        <!-- FOOTER -->
+        <div style="
+          background: #050505;
+          border-top: 1px solid #1f2937;
+          padding: 18px 32px;
+        ">
+
+          <p style="
+            margin: 0;
+            color: #6b7280;
+            font-size: 12px;
+            text-align: center;
+          ">
+            © 2025 Nexar Point Pvt. Ltd. All rights reserved.
           </p>
+
         </div>
+
       </div>
+
+    </div>
     `
   };
+
+  // =========================================================
+  // SEND EMAILS
+  // =========================================================
 
   try {
+
     await transporter.sendMail(internalMail);
+
     await transporter.sendMail(autoReply);
-    res.json({ success: true, message: 'Inquiry sent successfully.' });
+
+    res.json({
+      success: true,
+      message: 'Inquiry sent successfully.'
+    });
+
   } catch (error) {
-    console.error('Email error:', error);
-    res.status(500).json({ error: 'Failed to send email. Please try again or contact us directly.' });
+
+    console.error('Email error:', error.message);
+
+    res.status(500).json({
+      error: `Failed to send email: ${error.message}`
+    });
+
   }
+
 });
 
+// ---------------- START SERVER ----------------
 app.listen(PORT, () => {
   console.log(`Nexar Point server running on http://localhost:${PORT}`);
 });
