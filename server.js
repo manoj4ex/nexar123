@@ -6,13 +6,15 @@
  *   npm install express nodemailer cors dotenv
  *   node server.js
  *
- * .env file:
- *   MAIL_HOST=smtp.gmail.com
+ * .env file (example for Zoho SMTP):
+ *   MAIL_HOST=smtp.zoho.com
  *   MAIL_PORT=587
- *   MAIL_USER=sah.manoj2022@gmail.com
- *   MAIL_PASS=your_gmail_app_password
+ *   MAIL_USER=info@nexar.com.np
+ *   MAIL_PASS=your_zoho_password
  *   MAIL_TO=info@nexar.com.np
  *   PORT=3000
+ *
+ * Supports any SMTP provider: Gmail, Zoho, AWS SES, SendGrid, etc.
  */
 
 require('dotenv').config();
@@ -31,20 +33,29 @@ app.use(express.static('.'));
 
 // ---------------- EMAIL TRANSPORTER ----------------
 const transporter = nodemailer.createTransport({
-  host: process.env.MAIL_HOST || 'smtp.gmail.com',
+  host: process.env.MAIL_HOST || 'smtp.zoho.com',
   port: parseInt(process.env.MAIL_PORT) || 587,
-  secure: false,
+  secure: parseInt(process.env.MAIL_PORT) === 465, // true for port 465, false for 587
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS
   }
 });
 
+// Verify connection on startup
+transporter.verify((error, success) => {
+  if (error) {
+    console.error('SMTP connection error:', error.message);
+  } else {
+    console.log('SMTP server is ready to take messages');
+  }
+});
+
 // ---------------- INQUIRY ENDPOINT ----------------
 app.post('/api/inquiry', async (req, res) => {
-  if (!process.env.MAIL_USER || !process.env.MAIL_PASS || process.env.MAIL_PASS === 'YOUR_PASSWORD' || process.env.MAIL_PASS === 'YOUR_GMAIL_APP_PASSWORD') {
+  if (!process.env.MAIL_USER || !process.env.MAIL_PASS) {
     return res.status(500).json({
-      error: 'Email is not configured. Set MAIL_USER and a real Gmail app password in MAIL_PASS, then restart the server.'
+      error: 'Email is not configured. Set MAIL_USER and MAIL_PASS in .env file, then restart the server.'
     });
   }
 
