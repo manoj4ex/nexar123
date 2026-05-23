@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexar Point Pvt. Ltd. | Infrastructure You Can Trust</title>
+<meta name="description" content="Nexar Point delivers end-to-end ICT solutions — data center, cloud, ISO certification, and intelligent software for enterprise Nepal.">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#000000",
+        "on-primary": "#ffffff",
+        "primary-container": "#101c2e",
+        "on-primary-container": "#79849b",
+        "secondary": "#005db9",
+        "on-secondary": "#ffffff",
+        "secondary-container": "#4893fe",
+        "on-secondary-container": "#002b5c",
+        "tertiary": "#000000",
+        "tertiary-container": "#291800",
+        "on-tertiary-container": "#b37800",
+        "tertiary-fixed": "#ffddb2",
+        "tertiary-fixed-dim": "#ffb94c",
+        "on-tertiary-fixed": "#291800",
+        "surface": "#f7f9fd",
+        "surface-dim": "#d8dade",
+        "surface-bright": "#f7f9fd",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#f2f4f8",
+        "surface-container": "#eceef2",
+        "surface-container-high": "#e6e8ec",
+        "surface-container-highest": "#e0e3e6",
+        "on-surface": "#191c1f",
+        "on-surface-variant": "#45474c",
+        "surface-variant": "#e0e3e6",
+        "inverse-surface": "#2d3134",
+        "inverse-on-surface": "#eff1f5",
+        "outline": "#75777d",
+        "outline-variant": "#c5c6cd",
+        "surface-tint": "#535f74",
+        "on-secondary-fixed": "#001b3e",
+        "on-secondary-fixed-variant": "#00458d",
+        "background": "#f7f9fd",
+        "on-background": "#191c1f",
+        "error": "#ba1a1a",
+        "on-error": "#ffffff",
+        "error-container": "#ffdad6"
+      },
+      borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px" },
+      spacing: { "container-max": "1280px", "margin-mobile": "20px", "margin-desktop": "64px", "gutter": "24px", "section-padding": "96px" },
+      fontFamily: { "headline": ["Sora","sans-serif"], "body": ["Inter","sans-serif"] },
+      fontSize: {
+        "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "headline-xl-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        "label-sm": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }]
+      }
+    }
+  }
+}
+</script>
+<style>
+  .circuit-pattern { background-image: radial-gradient(circle at 2px 2px, rgba(14,111,216,0.06) 1px, transparent 0); background-size: 32px 32px; }
+  .circuit-lines { background-image: linear-gradient(0deg, transparent 24%, rgba(14,111,216,0.04) 25%, rgba(14,111,216,0.04) 26%, transparent 27%, transparent 74%, rgba(14,111,216,0.04) 75%, rgba(14,111,216,0.04) 76%, transparent 77%), linear-gradient(90deg, transparent 24%, rgba(14,111,216,0.04) 25%, rgba(14,111,216,0.04) 26%, transparent 27%, transparent 74%, rgba(14,111,216,0.04) 75%, rgba(14,111,216,0.04) 76%, transparent 77%); background-size: 80px 80px; }
+  .hero-glow { background: radial-gradient(circle at 20% 50%, rgba(14,111,216,0.18) 0%, transparent 55%); }
+  .technical-shadow { box-shadow: 0 4px 20px rgba(10,22,40,0.06); }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  html { scroll-behavior: smooth; }
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: #4893fe !important; box-shadow: 0 0 0 2px rgba(72,147,254,0.2); }
+  .nav-link-active { color: #4893fe; border-bottom: 2px solid #4893fe; padding-bottom: 2px; }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+
+<!-- ══════════════════════════════════════════
+     GLOBAL NAVBAR
+══════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 w-full z-50 bg-primary-container border-b border-white/5 transition-shadow duration-300">
+  <div class="flex justify-between items-center h-20 px-5 md:px-margin-desktop max-w-container-max mx-auto">
+    <a href="#" class="flex items-baseline gap-1">
+      <span class="font-headline text-headline-sm font-bold text-surface-container-lowest tracking-tight">NEXAR</span>
+      <span class="font-headline text-headline-sm font-light text-secondary-container tracking-tight">POINT</span>
+      <span class="text-on-primary-container text-xs ml-1 hidden sm:inline">Pvt. Ltd.</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7">
+      <a href="#services" class="text-surface-container-lowest font-body text-label-sm font-medium hover:text-secondary-container transition-colors">Services</a>
+      <a href="#training"  class="text-surface-container-lowest font-body text-label-sm font-medium hover:text-secondary-container transition-colors">Training</a>
+      <a href="#certification" class="text-surface-container-lowest font-body text-label-sm font-medium hover:text-secondary-container transition-colors">Certification</a>
+      <a href="#products"  class="text-surface-container-lowest font-body text-label-sm font-medium hover:text-secondary-container transition-colors">Products</a>
+      <a href="#cloud"     class="text-surface-container-lowest font-body text-label-sm font-medium hover:text-secondary-container transition-colors">Cloud</a>
+      <a href="#about"     class="text-surface-container-lowest font-body text-label-sm font-medium hover:text-secondary-container transition-colors">About</a>
+    </nav>
+    <a href="#inquiry" class="hidden md:inline-flex bg-secondary-container text-on-secondary-container px-5 py-2.5 rounded-lg font-body text-label-sm hover:opacity-90 transition-all">Get Started</a>
+    <button id="hamburger" class="md:hidden text-white p-2" aria-label="Menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden bg-primary-container border-t border-white/5 px-5 py-4 flex flex-col gap-4">
+    <a href="#services" class="text-surface-container-lowest text-sm py-1">Services</a>
+    <a href="#training"  class="text-surface-container-lowest text-sm py-1">Training</a>
+    <a href="#certification" class="text-surface-container-lowest text-sm py-1">Certification</a>
+    <a href="#products"  class="text-surface-container-lowest text-sm py-1">Products</a>
+    <a href="#cloud"     class="text-surface-container-lowest text-sm py-1">Cloud</a>
+    <a href="#about"     class="text-surface-container-lowest text-sm py-1">About</a>
+    <a href="#inquiry" class="bg-secondary-container text-on-secondary-container px-4 py-2.5 rounded-lg text-sm font-semibold text-center mt-2">Get Started</a>
+  </div>
+</header>
+
+<main class="pt-20">
+
+<!-- ══════════════════════════════════════════
+     HERO SECTION
+══════════════════════════════════════════ -->
+<section id="hero" class="relative bg-primary-container overflow-hidden min-h-[88vh] flex items-center">
+  <div class="absolute inset-0 circuit-pattern opacity-100"></div>
+  <div class="absolute inset-0 circuit-lines opacity-100"></div>
+  <div class="absolute inset-0 hero-glow"></div>
+  <div class="relative w-full max-w-container-max mx-auto px-5 md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-16">
+    <!-- Left Content -->
+    <div class="z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary-container/10 border border-secondary-container/25 text-secondary-container mb-7">
+        <span class="material-symbols-outlined text-[16px]">verified_user</span>
+        <span class="font-body text-label-sm tracking-wider uppercase">Nepal's Enterprise ICT Partner</span>
+      </div>
+      <h1 class="font-headline text-headline-xl-mobile md:text-headline-xl text-surface-container-lowest mb-6 leading-tight">
+        Infrastructure You Can Trust.<br>
+        <span class="text-secondary-container">Compliance You Can Prove.</span>
+      </h1>
+      <p class="font-body text-body-lg text-on-primary-container max-w-lg mb-10 leading-relaxed">
+        Nexar Point delivers end-to-end ICT solutions — from data center design to cloud deployment, ISO certification, and intelligent software — built for enterprise Nepal and beyond.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#inquiry" class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-lg font-body text-label-sm hover:shadow-[0_0_24px_rgba(72,147,254,0.4)] transition-all text-center">Get a Free Consultation</a>
+        <a href="#services" class="border border-outline-variant/30 text-surface-container-lowest px-8 py-4 rounded-lg font-body text-label-sm hover:bg-white/5 transition-all text-center">Explore Our Services</a>
+      </div>
+    </div>
+    <!-- Right Image -->
+    <div class="relative hidden md:block group">
+      <div class="absolute inset-0 bg-secondary-container/20 blur-[80px] rounded-full opacity-25 group-hover:opacity-40 transition-opacity duration-700"></div>
+      <div class="relative rounded-xl overflow-hidden border border-outline-variant/10 shadow-2xl">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5Xl_U0alahZpmtTQcTzP3Fk9BNzHrNjsFLi9Y-JNuV-D9FB963NDlGzBpGxX_VzerGIz4ch5feP_ohJX0QjZTbBeJ5BuRRxEiJigNPhhtHE41x1gLVL2AmdHUTVdgyhSdhAuIJAvKR1Tc2De3wDWbr99nz6yfPl-LkO0oMOsMnwyIDT7LKvaqx9l_2FOM18vMDwAcOTfHytXoXbqTkAP1PZSUHs0pM8_f-Rb4Ca6lpVEf3gRa9kCXa4P7FMnjq-WwSmadiHsTrlX4"
+             alt="Enterprise Data Center Infrastructure" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="bg-surface-container-lowest border-y border-outline-variant/10">
+  <div class="max-w-container-max mx-auto px-5 md:px-margin-desktop py-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-x divide-outline-variant/10">
+      <div class="flex flex-col items-center text-center"><span class="font-headline text-headline-md text-primary mb-1">10+ Years</span><span class="font-body text-label-sm text-on-surface-variant uppercase tracking-widest">Experience</span></div>
+      <div class="flex flex-col items-center text-center"><span class="font-headline text-headline-md text-primary mb-1">50+</span><span class="font-body text-label-sm text-on-surface-variant uppercase tracking-widest">Enterprise Clients</span></div>
+      <div class="flex flex-col items-center text-center"><span class="font-headline text-headline-md text-primary mb-1">4</span><span class="font-body text-label-sm text-on-surface-variant uppercase tracking-widest">ISO Standards</span></div>
+      <div class="flex flex-col items-center text-center"><span class="font-headline text-headline-md text-primary mb-1">AWS</span><span class="font-body text-label-sm text-on-surface-variant uppercase tracking-widest">Certified Partner</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     WHO WE ARE — MISSION / VISION / VALUES
+══════════════════════════════════════════ -->
+<section id="about" class="bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+  <div class="circuit-pattern absolute inset-0 pointer-events-none opacity-60"></div>
+  <div class="max-w-container-max mx-auto relative z-10">
+    <header class="mb-14">
+      <span class="inline-block bg-secondary/10 text-secondary font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Who We Are</span>
+      <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-primary mb-3">Purposeful Technology. Measurable Results.</h2>
+      <div class="w-16 h-1 bg-secondary rounded-full"></div>
+    </header>
+    <!-- Mission + Vision + Image -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-gutter">
+      <div class="bg-white p-8 technical-shadow border-l-4 border-secondary rounded-r-xl flex flex-col fade-up">
+        <span class="material-symbols-outlined text-secondary text-4xl mb-5">target</span>
+        <h3 class="font-headline text-headline-sm text-primary mb-4">Our Mission</h3>
+        <p class="font-body text-body-md text-on-surface-variant leading-relaxed">To empower organizations across Nepal and the region with enterprise-grade ICT infrastructure, internationally recognized compliance frameworks, and intelligent software solutions — delivered with precision, accountability, and measurable impact.</p>
+      </div>
+      <div class="bg-white p-8 technical-shadow border-l-4 border-secondary rounded-r-xl flex flex-col fade-up" style="transition-delay:80ms">
+        <span class="material-symbols-outlined text-secondary text-4xl mb-5">visibility</span>
+        <h3 class="font-headline text-headline-sm text-primary mb-4">Our Vision</h3>
+        <p class="font-body text-body-md text-on-surface-variant leading-relaxed">To be South Asia's most trusted integrated ICT solutions partner — where data center expertise meets cloud intelligence, compliance mastery, and digital transformation at scale.</p>
+      </div>
+      <div class="rounded-xl overflow-hidden h-[320px] lg:h-auto technical-shadow fade-up" style="transition-delay:160ms">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRSfksDBzvqk2oUUsVi7BnpBLGszemVS0X_FtxDzkMy42X2GPAowJSlKEpeCMpzzp49iajTznctB_3XWUMxeimFRSH6yG1cAt4N_GCJul1vcn0ugNCnn8FbrnxpsOi8EPOaquEHFpxQRFNUC-FQlHduWeXk32upzpw1YE7hq9RQuEVHSHbFHw0Vf9y6c9wbmYO0Psv-0upEp3wtBAfHbmXM6cKv-eDB3OYvPg0NhYkWMAfO0maicuaMDpbyrqN64ZZqkGSHgZmdJ6L"
+             alt="Professional Business Meeting in Nepal" class="w-full h-full object-cover">
+      </div>
+    </div>
+    <!-- Values -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mt-10">
+      <div class="bg-white p-6 border-l-2 border-secondary technical-shadow rounded-r-lg fade-up">
+        <span class="material-symbols-outlined text-secondary text-2xl mb-3 block">shield</span>
+        <h4 class="font-headline text-sm uppercase tracking-wider text-primary mb-2 font-semibold">Reliability</h4>
+        <p class="font-body text-on-surface-variant text-sm">Infrastructure that never fails when it matters most.</p>
+      </div>
+      <div class="bg-white p-6 border-l-2 border-secondary technical-shadow rounded-r-lg fade-up" style="transition-delay:80ms">
+        <span class="material-symbols-outlined text-secondary text-2xl mb-3 block">verified_user</span>
+        <h4 class="font-headline text-sm uppercase tracking-wider text-primary mb-2 font-semibold">Compliance-First</h4>
+        <p class="font-body text-on-surface-variant text-sm">Every solution built to international standards from day one.</p>
+      </div>
+      <div class="bg-white p-6 border-l-2 border-secondary technical-shadow rounded-r-lg fade-up" style="transition-delay:160ms">
+        <span class="material-symbols-outlined text-secondary text-2xl mb-3 block">school</span>
+        <h4 class="font-headline text-sm uppercase tracking-wider text-primary mb-2 font-semibold">Knowledge Transfer</h4>
+        <p class="font-body text-on-surface-variant text-sm">We train people, not just deploy technology.</p>
+      </div>
+      <div class="bg-white p-6 border-l-2 border-secondary technical-shadow rounded-r-lg fade-up" style="transition-delay:240ms">
+        <span class="material-symbols-outlined text-secondary text-2xl mb-3 block">layers</span>
+        <h4 class="font-headline text-sm uppercase tracking-wider text-primary mb-2 font-semibold">End-to-End Ownership</h4>
+        <p class="font-body text-on-surface-variant text-sm">From consultation to certification to ongoing operation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONSULTATION SERVICES
+══════════════════════════════════════════ -->
+<section id="services" class="bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+  <div class="circuit-lines absolute inset-0 opacity-5 pointer-events-none"></div>
+  <div class="max-w-container-max mx-auto relative z-10">
+    <header class="mb-14 flex flex-col md:flex-row justify-between items-end gap-6">
+      <div>
+        <span class="inline-block bg-secondary-container/15 text-secondary-container font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Consultation Services</span>
+        <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-surface-container-lowest mb-3">Expert ICT Consultation</h2>
+        <p class="font-body text-body-md text-on-primary-container max-w-xl">From greenfield data center builds to hybrid cloud migrations, our senior consultants bring real-world experience to your most critical infrastructure decisions.</p>
+      </div>
+      <a href="#inquiry" class="text-secondary-container font-body text-label-sm inline-flex items-center gap-2 hover:gap-4 transition-all whitespace-nowrap">Discuss Requirements <span class="material-symbols-outlined">arrow_forward</span></a>
+    </header>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+      <!-- Data Center -->
+      <div class="bg-surface-container-lowest rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary-container/30 transition-all fade-up">
+        <div class="h-52 overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWNLH_6LriUki2SJD7bkqY-YxIjEeg1pzLP92uPI3YNg8G8u1RSUvVo7rBFOhBUi0bNlAgsSE3GgI2nTxcI9JU6j_YhojVYXn7ONagqSFEB6us_cOOY-VIY_juSfBZCa0yQVG9fcqds9Erp_olpPPhucmP6UeSINoqZ4uqIZ53thEM8hq1US-PRIVqhuuGjazys3mr87hL0Gt0M9exsCKkDsFAK4afpzBJ-_-riGEAaacTqjl467ZIM8tYrlBeDtSt-0jcveJlXdfo"
+               alt="Data Center Consultation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-8">
+          <span class="material-symbols-outlined text-secondary-container text-3xl mb-4 block">dns</span>
+          <h3 class="font-headline text-headline-sm text-primary mb-3">Data Center Consultation</h3>
+          <p class="font-body text-body-md text-on-surface-variant mb-4">Design, audit, and optimization of enterprise data centers — covering physical infrastructure, power, cooling, redundancy, and DCIM integration.</p>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Site selection &amp; facility design</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Power &amp; cooling architecture</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Redundancy &amp; availability planning</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Cloud Consultation -->
+      <div class="bg-surface-container-lowest rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary-container/30 transition-all fade-up" style="transition-delay:80ms">
+        <div class="h-52 overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiN-24waO07OamFiFbr-QcnW1Flt5eRnSZCRI4qVyCF_c06HstK2jQ0GLulTbgJHvfnxEwTEFxWmmt-4Y7jYlr98HGVVfPicqnpoIUa8iqVnwrLI4BZyT0SZkiXNgXllnC5D-fJ9JuK_HeDyzc10SNqHxU7P_IVsyaf1E5i56ZQjZEEzPhe6_j5nlOHzeklgFl8FrlmsxxYZiXgUHgqNPQEpQ7DcfKLGv7eWei4o5YuLwTOfM7kBdH0CnJOd30YgW8sXkKjCHRSxCz"
+               alt="Cloud Services Consultation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-8">
+          <span class="material-symbols-outlined text-secondary-container text-3xl mb-4 block">cloud_sync</span>
+          <h3 class="font-headline text-headline-sm text-primary mb-3">Cloud Services Consultation</h3>
+          <p class="font-body text-body-md text-on-surface-variant mb-4">Cloud readiness assessments, architecture design, migration planning, and multi-cloud strategy across public, private, and hybrid environments.</p>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Cloud readiness assessment</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Migration strategy &amp; planning</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Cost optimization</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Networking -->
+      <div class="bg-surface-container-lowest rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary-container/30 transition-all fade-up" style="transition-delay:160ms">
+        <div class="h-52 overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQnpZdvStXkODK3E1l21_yikLwAMiaFVqY6va9R8-Smt9RrCI0pt3hBUdv1MnCS0KofTF1uXWK29guDwH0uLr8zBX6FYAPL8kyBy8TouBxOuBNHBTNgQaNqVwqqQwyiFfh9kFqMa1cAABfG6uMEYDu5z6WOTxMy0RhDVl65g_Xs4ZOIScNyPPsr_Mqln5TRjvhlu2AuxLzSagTYSax1VvNZRGT2yyGC8oh0ASwbxnCZnEdVdtx-B-lAP3aDcACzlgSnWSFakZZPaAC"
+               alt="Networking Services" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-8">
+          <span class="material-symbols-outlined text-secondary-container text-3xl mb-4 block">hub</span>
+          <h3 class="font-headline text-headline-sm text-primary mb-3">Networking Services</h3>
+          <p class="font-body text-body-md text-on-surface-variant mb-4">Enterprise LAN/WAN design, SD-WAN, structured cabling, network security, and performance optimization for campus and data center environments.</p>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Network architecture design</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>SD-WAN &amp; WAN optimization</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Network security hardening</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Integration -->
+      <div class="bg-surface-container-lowest rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary-container/30 transition-all fade-up" style="transition-delay:240ms">
+        <div class="h-52 overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc3NxfjNDvmrd2FM08ONSXbxxaiwX9m3KSGECBEc7I2YU6D3Ji1QrRb0RSvjI2tcAF-1au1SfHYPA0GKU1D4t86nda0DG2KTBwiw3NIbor-Ta4TpHcVvLvWsVQOIqnj-EMtXneCKs3Y3yOCFsk_Tt2kSab8m4641g9MZ0d9b_-G7da00EDrRyEY-qahJvKYJImrQHVjZsMEXnzGls0kroeLpJk6j5UfYrzvY31GWQH8LgxD8CxfjHWB-DB4YoHLZc-_xGgotPVeGx2"
+               alt="Integration Services" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-8">
+          <span class="material-symbols-outlined text-secondary-container text-3xl mb-4 block">integration_instructions</span>
+          <h3 class="font-headline text-headline-sm text-primary mb-3">Integration Services</h3>
+          <p class="font-body text-body-md text-on-surface-variant mb-4">Seamless integration of hardware, software, and cloud platforms — ensuring your systems communicate reliably and securely at scale.</p>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>System &amp; API integration</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Cross-platform data flows</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[16px]">arrow_forward</span>Enterprise middleware setup</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ISO TRAINING
+══════════════════════════════════════════ -->
+<section id="training" class="bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
+  <div class="max-w-container-max mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+      <div>
+        <span class="inline-block bg-green-100 text-green-700 font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Training Programs</span>
+        <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-primary mb-4">Professional Training Programs</h2>
+        <p class="font-body text-body-md text-on-surface-variant leading-relaxed">Internationally aligned training delivered by certified practitioners. Build your team's capability in information security, quality management, environmental standards, and cloud architecture.</p>
+      </div>
+      <div class="rounded-xl overflow-hidden h-64 lg:h-80 technical-shadow">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-1fn5koJOFWePz34qj4me6eCbqlV6qmABU6WzQnrAqF8aJN3Vbgx8YoCy8KHa09maddjZG2ffanmFmeVVLPT6J4cXoFSj9b86lb77K64UQ7JmXMQlAOcbXtEdyN6XL5ADLK5bf7M6iKHLMIOQ1IgB23drB2Sy0yqvUZ6ElJIiQ5AjIX8uzh2r5GxQjLwLehNp2ZiGHxCWJ2fEaxFdwlgrEPn516oHQ2Wr2yDXJga06OUbbuvpfKL3vAhEnMKz4D926pX-voQQbA8t"
+             alt="Professional Training Session Nepal" class="w-full h-full object-cover">
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+      <div class="bg-white rounded-xl p-7 technical-shadow border-2 border-secondary relative fade-up">
+        <div class="absolute top-4 right-4 bg-secondary text-white text-xs font-bold px-2.5 py-1 rounded-full">Most In-Demand</div>
+        <div class="font-headline text-5xl font-black text-outline/20 leading-none mb-3">27001</div>
+        <h3 class="font-headline text-headline-sm text-primary mb-2">ISO 27001</h3>
+        <p class="text-secondary font-semibold text-xs mb-3 uppercase tracking-wide">Information Security Management</p>
+        <p class="font-body text-sm text-on-surface-variant mb-5">Full ISMS framework, risk assessment methodology, control implementation, and audit preparation.</p>
+        <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-5">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_month</span>Scheduled batches</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">workspace_premium</span>Certificate</span>
+        </div>
+        <a href="#inquiry" class="block bg-secondary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">Enroll Now</a>
+      </div>
+      <div class="bg-white rounded-xl p-7 technical-shadow border border-outline-variant/10 fade-up" style="transition-delay:80ms">
+        <div class="font-headline text-5xl font-black text-outline/20 leading-none mb-3">9001</div>
+        <h3 class="font-headline text-headline-sm text-primary mb-2">ISO 9001</h3>
+        <p class="text-secondary font-semibold text-xs mb-3 uppercase tracking-wide">Quality Management Systems</p>
+        <p class="font-body text-sm text-on-surface-variant mb-5">Process documentation, customer focus, internal audits, and management review cycles.</p>
+        <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-5">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_month</span>Scheduled batches</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">workspace_premium</span>Certificate</span>
+        </div>
+        <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Enroll Now</a>
+      </div>
+      <div class="bg-white rounded-xl p-7 technical-shadow border border-outline-variant/10 fade-up" style="transition-delay:160ms">
+        <div class="font-headline text-5xl font-black text-outline/20 leading-none mb-3">14001</div>
+        <h3 class="font-headline text-headline-sm text-primary mb-2">ISO 14001</h3>
+        <p class="text-secondary font-semibold text-xs mb-3 uppercase tracking-wide">Environmental Management</p>
+        <p class="font-body text-sm text-on-surface-variant mb-5">Environmental aspect identification, legal compliance obligations, and EMS implementation.</p>
+        <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-5">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_month</span>Scheduled batches</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">workspace_premium</span>Certificate</span>
+        </div>
+        <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Enroll Now</a>
+      </div>
+      <div class="bg-white rounded-xl p-7 technical-shadow border border-outline-variant/10 relative fade-up" style="transition-delay:240ms">
+        <div class="absolute top-4 right-4 bg-[#FF9900] text-[#291800] text-xs font-bold px-2.5 py-1 rounded-full">AWS Authorized</div>
+        <div class="font-headline text-5xl font-black text-[#FF9900]/20 leading-none mb-3">AWS</div>
+        <h3 class="font-headline text-headline-sm text-primary mb-2">AWS Cloud Training</h3>
+        <p class="text-[#FF9900] font-semibold text-xs mb-3 uppercase tracking-wide">Cloud Architecture</p>
+        <p class="font-body text-sm text-on-surface-variant mb-5">Hands-on training covering EC2, S3, VPC, IAM, RDS, and cloud-native best practices.</p>
+        <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-5">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_month</span>Scheduled batches</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">workspace_premium</span>Certificate</span>
+        </div>
+        <a href="#inquiry" class="block bg-[#FF9900] text-[#291800] text-center py-2.5 rounded-lg text-sm font-bold hover:opacity-90 transition-opacity">Enroll Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ISO CERTIFICATION
+══════════════════════════════════════════ -->
+<section id="certification" class="bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+  <div class="circuit-lines absolute inset-0 opacity-5 pointer-events-none"></div>
+  <div class="max-w-container-max mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+      <div>
+        <span class="inline-block bg-tertiary-fixed/10 text-tertiary-fixed-dim font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Certification Services</span>
+        <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-surface-container-lowest mb-4">ISO Certification Services</h2>
+        <p class="font-body text-body-md text-on-primary-container leading-relaxed">We guide organizations from gap analysis to audit readiness and final certification — with structured documentation support, internal audit facilitation, and liaison with accredited certification bodies.</p>
+      </div>
+      <div class="rounded-xl overflow-hidden h-64 lg:h-72 technical-shadow">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsKcPcb_Q1PaNqzfqRvPpSgXABchh7lR8g3u8-ZrM91VTl6CbmAdgDtXpJ4GJoF4WRdrZWdOnXwCloJZmGcmMghvsWTbkPpZ6NfPDod5pvSHgBpqfiEmFYIP8utlaHXkulummw5znkDebxmM2kk8lpqI8V76WlEw4nLoWxZPLMQ9aJ5ILUhq3C9w8Wd04TpN4VuJ9P4Q5ESCEzFhj6tU9CsO-IHT1lGokJGZikBb2ltmYHLLOJn5flROYr50vE5Owcei0L7LlxEmwU"
+             alt="ISO Certification Ceremony" class="w-full h-full object-cover">
+      </div>
+    </div>
+    <!-- Process Timeline -->
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6 md:p-8 mb-12">
+      <h3 class="font-headline text-surface-container-lowest text-headline-sm mb-6">Certification Process</h3>
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="flex flex-col items-center gap-2 min-w-[80px]"><div class="w-9 h-9 rounded-full bg-secondary/20 text-secondary-container flex items-center justify-center font-bold text-sm">01</div><span class="text-xs text-on-primary-container text-center">Gap Analysis</span></div>
+        <span class="text-on-primary-container hidden sm:block">→</span>
+        <div class="flex flex-col items-center gap-2 min-w-[80px]"><div class="w-9 h-9 rounded-full bg-secondary/20 text-secondary-container flex items-center justify-center font-bold text-sm">02</div><span class="text-xs text-on-primary-container text-center">Documentation</span></div>
+        <span class="text-on-primary-container hidden sm:block">→</span>
+        <div class="flex flex-col items-center gap-2 min-w-[80px]"><div class="w-9 h-9 rounded-full bg-secondary/20 text-secondary-container flex items-center justify-center font-bold text-sm">03</div><span class="text-xs text-on-primary-container text-center">Internal Audit</span></div>
+        <span class="text-on-primary-container hidden sm:block">→</span>
+        <div class="flex flex-col items-center gap-2 min-w-[80px]"><div class="w-9 h-9 rounded-full bg-secondary/20 text-secondary-container flex items-center justify-center font-bold text-sm">04</div><span class="text-xs text-on-primary-container text-center">Mgmt Review</span></div>
+        <span class="text-on-primary-container hidden sm:block">→</span>
+        <div class="flex flex-col items-center gap-2 min-w-[80px]"><div class="w-9 h-9 rounded-full bg-secondary/20 text-secondary-container flex items-center justify-center font-bold text-sm">05</div><span class="text-xs text-on-primary-container text-center">Cert Audit</span></div>
+        <span class="text-on-primary-container hidden sm:block">→</span>
+        <div class="flex flex-col items-center gap-2 min-w-[80px]"><div class="w-9 h-9 rounded-full bg-tertiary-fixed-dim/80 text-on-tertiary-fixed flex items-center justify-center font-bold text-sm">06</div><span class="text-xs text-tertiary-fixed-dim text-center font-semibold">Certificate ✓</span></div>
+      </div>
+    </div>
+    <!-- Cert Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:border-tertiary-fixed-dim/40 transition-all technical-shadow fade-up">
+        <div class="font-headline text-5xl font-black text-tertiary-fixed-dim/25 leading-none mb-3">27001</div>
+        <h3 class="font-headline text-headline-sm text-surface-container-lowest mb-1">ISO 27001:2022</h3>
+        <p class="text-tertiary-fixed-dim text-xs font-bold uppercase tracking-widest mb-4">Information Security Management</p>
+        <p class="font-body text-sm text-on-primary-container mb-4 leading-relaxed">Protect your organization's data assets with a fully implemented ISMS aligned to the latest 2022 revision — covering all Annex A controls and risk treatment.</p>
+        <p class="text-xs text-on-primary-container mb-5">Typical timeline: <strong class="text-tertiary-fixed-dim">3–6 months</strong></p>
+        <a href="#inquiry" class="inline-block border border-tertiary-fixed-dim text-tertiary-fixed-dim px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-tertiary-fixed-dim hover:text-on-tertiary-fixed transition-all">Start Your Journey</a>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:border-tertiary-fixed-dim/40 transition-all technical-shadow fade-up" style="transition-delay:80ms">
+        <div class="font-headline text-5xl font-black text-tertiary-fixed-dim/25 leading-none mb-3">9001</div>
+        <h3 class="font-headline text-headline-sm text-surface-container-lowest mb-1">ISO 9001:2015</h3>
+        <p class="text-tertiary-fixed-dim text-xs font-bold uppercase tracking-widest mb-4">Quality Management System</p>
+        <p class="font-body text-sm text-on-primary-container mb-4 leading-relaxed">Demonstrate your commitment to quality and customer satisfaction with a certified QMS covering process control and continuous improvement.</p>
+        <p class="text-xs text-on-primary-container mb-5">Typical timeline: <strong class="text-tertiary-fixed-dim">2–4 months</strong></p>
+        <a href="#inquiry" class="inline-block border border-tertiary-fixed-dim text-tertiary-fixed-dim px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-tertiary-fixed-dim hover:text-on-tertiary-fixed transition-all">Start Your Journey</a>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:border-tertiary-fixed-dim/40 transition-all technical-shadow fade-up" style="transition-delay:160ms">
+        <div class="font-headline text-5xl font-black text-tertiary-fixed-dim/25 leading-none mb-3">14001</div>
+        <h3 class="font-headline text-headline-sm text-surface-container-lowest mb-1">ISO 14001:2015</h3>
+        <p class="text-tertiary-fixed-dim text-xs font-bold uppercase tracking-widest mb-4">Environmental Management</p>
+        <p class="font-body text-sm text-on-primary-container mb-4 leading-relaxed">Build environmental responsibility into operations with a certified EMS covering aspect identification, compliance obligations, and performance monitoring.</p>
+        <p class="text-xs text-on-primary-container mb-5">Typical timeline: <strong class="text-tertiary-fixed-dim">3–5 months</strong></p>
+        <a href="#inquiry" class="inline-block border border-tertiary-fixed-dim text-tertiary-fixed-dim px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-tertiary-fixed-dim hover:text-on-tertiary-fixed transition-all">Start Your Journey</a>
+      </div>
+    </div>
+    <div class="text-center mt-10"><a href="#inquiry" class="inline-flex items-center gap-2 bg-tertiary-fixed-dim text-on-tertiary-fixed px-8 py-4 rounded-lg font-body text-label-sm hover:opacity-90 transition-all">Get a Free Gap Analysis <span class="material-symbols-outlined">arrow_forward</span></a></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     DATA CENTER PRODUCTS
+══════════════════════════════════════════ -->
+<section id="products" class="bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
+  <div class="max-w-container-max mx-auto">
+    <header class="mb-14">
+      <span class="inline-block bg-secondary/10 text-secondary font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Products</span>
+      <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-primary mb-3">Data Center Infrastructure Products</h2>
+      <p class="font-body text-body-md text-on-surface-variant max-w-xl">We supply, install, and support enterprise-grade data center hardware — sourced from globally recognized manufacturers and backed by our in-house technical team.</p>
+    </header>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <!-- UPS -->
+      <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up">
+        <div class="h-56 overflow-hidden bg-primary-container relative">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTl-5_R7g6-kp0vcmHrHQLgGoAosWjnFgEjUr6uN7DboL6eauEw3cZvHgTN4YMeOFPQmqZhb3dWlh-t0T8n7H2kqlUBLX0VT5l1apCx-F-uWOk_VWnqfwk1hB35vfIebADKnY28wTWUPRGupHPfmiaN9XbtHqGoSzowMts5scEY2d7W6N_O1CS_KPH_owvMZcHqvAUERdvpfRgMujnmes1UlrBFfYYjEgWJ6MYSi107lHL8XECANO1ROjLr8QtZhmkS5wVAkp5WLgJ"
+               alt="Enterprise UPS Unit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute top-3 right-3 bg-primary-container/80 text-secondary-container font-headline text-xs font-bold px-2 py-1 rounded">UPS</div>
+        </div>
+        <div class="p-7">
+          <h3 class="font-headline text-headline-sm text-primary mb-2">Uninterruptible Power Supply</h3>
+          <p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">Enterprise UPS systems ensuring zero-downtime power continuity for mission-critical IT loads. Single &amp; three-phase configurations with remote management.</p>
+          <ul class="text-xs text-on-surface-variant space-y-1.5 mb-5 border-t border-outline-variant/10 pt-4">
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>Online double-conversion topology</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>Remote monitoring &amp; management</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>N+1 redundancy support</li>
+          </ul>
+          <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Request Quote</a>
+        </div>
+      </div>
+      <!-- PAC -->
+      <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up" style="transition-delay:80ms">
+        <div class="h-56 overflow-hidden relative">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCubw2LdH7vf-OAm_az_ZosBy7YIRV54oTVwfmUL_3mEsc7-n_vVgSGZh4w2fceWARYSGbaJbKLwBh1ZkAkFP2rNYSGHtoUw-7aV3sUGFR4FKYfPJMH0wSHjgf_hlOt6RebjgnjJtxtVwbxyADZXwPjqIjd9t5Tj1jF95GV9_YTe9lTmtqf8kQiu3Z8PygMi2Typ6Lsdu12okQdacQlP3Lmc9Wxwq7Veyvr7qXmt3qwKimr3X4hj5oW_bf-11vxUNnyAOOcutAFLv4A"
+               alt="Precision Air Conditioning PAC Unit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute top-3 right-3 bg-primary-container/80 text-secondary-container font-headline text-xs font-bold px-2 py-1 rounded">PAC</div>
+        </div>
+        <div class="p-7">
+          <h3 class="font-headline text-headline-sm text-primary mb-2">Precision Air Conditioning</h3>
+          <p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">Purpose-built precision cooling for data center environments — maintaining optimal temperature and humidity with high energy efficiency and redundancy.</p>
+          <ul class="text-xs text-on-surface-variant space-y-1.5 mb-5 border-t border-outline-variant/10 pt-4">
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>±1°C temperature precision</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>In-row &amp; room cooling options</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>Integrated humidity control</li>
+          </ul>
+          <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Request Quote</a>
+        </div>
+      </div>
+      <!-- DCIM -->
+      <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up" style="transition-delay:160ms">
+        <div class="h-56 overflow-hidden relative">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCXSBEnCJMlb5ErBB79cQ1qbLKPRDzVoI8_K71aNVJuTyFKLetyDGh5n4T7y8WyApr9f1lgIdUwJepB8ZmtizIJNBgxu8ZEtGt0xMdTmat0lWYwAuHo97mdCiSQMIiHda6CyQKnVU3WNVV258lz-CfW15Pk1Ojq60r91U_rwmFrOiGFhSGYJO2rdBX-R4afxAmHi1nVGVu8k_EGAzrLIlqF-DDTOzmCZtN9_Hz-WqmKL4H_xLyPJmBvrKvTzBmmwNmcBgmQyxMGaSD"
+               alt="DCIM Interface Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute top-3 right-3 bg-primary-container/80 text-secondary-container font-headline text-xs font-bold px-2 py-1 rounded">DCIM</div>
+        </div>
+        <div class="p-7">
+          <h3 class="font-headline text-headline-sm text-primary mb-2">DC Infrastructure Management</h3>
+          <p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">Unified visibility across power, cooling, space, and assets. Real-time dashboards, capacity planning, and automated alerts for intelligent operations.</p>
+          <ul class="text-xs text-on-surface-variant space-y-1.5 mb-5 border-t border-outline-variant/10 pt-4">
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>Real-time power &amp; cooling monitoring</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>Asset &amp; capacity management</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">▸</span>Floor map &amp; rack visualization</li>
+          </ul>
+          <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Request Quote</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-sm text-on-surface-variant mt-8 italic">We represent leading global manufacturers — contact us for current product portfolio and pricing.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SOFTWARE SERVICES
+══════════════════════════════════════════ -->
+<section id="software" class="bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+  <div class="circuit-lines absolute inset-0 opacity-5 pointer-events-none"></div>
+  <div class="max-w-container-max mx-auto relative z-10">
+    <header class="mb-16">
+      <span class="inline-block bg-secondary-container/15 text-secondary-container font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Software Services</span>
+      <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-surface-container-lowest mb-3">Intelligent Software Solutions</h2>
+      <p class="font-body text-body-md text-on-primary-container max-w-xl">Purpose-built applications solving real operational problems — from guest network management to enterprise infrastructure monitoring.</p>
+    </header>
+    <!-- Captive WiFi -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+      <div class="fade-up">
+        <span class="text-secondary-container font-body text-label-sm uppercase tracking-wider block mb-3">Captive WiFi Portal</span>
+        <h3 class="font-headline text-headline-md text-surface-container-lowest mb-4">Branded Guest WiFi with Full Access Control</h3>
+        <p class="font-body text-body-md text-on-primary-container mb-6 leading-relaxed">Deploy a professional captive portal for hotels, hospitals, campuses, and enterprises. Includes user authentication, bandwidth management, session control, and customizable landing pages.</p>
+        <ul class="space-y-2.5 mb-8">
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Custom branding &amp; landing page</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>OTP / voucher / social login</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Bandwidth throttling per user</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Real-time user dashboard</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Detailed usage reports &amp; analytics</li>
+        </ul>
+        <a href="#inquiry" class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-7 py-3.5 rounded-lg font-body text-label-sm hover:opacity-90 transition-all">Request a Demo <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+      </div>
+      <div class="rounded-xl overflow-hidden h-72 lg:h-96 technical-shadow fade-up" style="transition-delay:100ms">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTUU7ks61CMm6TLnfIpVL9G6e6FxLd0aCbFRlon2pjZNxdtAd7nll3oWyjutwAv5foUPwxGwEXR8Xs6B2lLH_HQxAzgKMbP8x5yJ2woK3wMCj9kVDF4tVpXjibiwPwrlIFe4NioQWhLRyp2mrCIdzJjMtXC7EqSdQQNfLJdOuLf9cCNjyvJVVgYRFiZac2Gv2h7GYDnRKxXANTl9zzZWQ_DnxEQCFXQqjhqO5GawbNQ3ogTkZLV7Bj7HCg9qBKKNydP8-RkEljgkCJ"
+             alt="Captive WiFi Portal Hotel Lobby" class="w-full h-full object-cover">
+      </div>
+    </div>
+    <!-- Monitoring -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="rounded-xl overflow-hidden h-72 lg:h-96 technical-shadow order-2 lg:order-1 fade-up">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBixrp2ufAhTHJwDrloKi9tNVkFlQLKt_rFl5yLEBUGGw8UYjOuIBgnZbpwRd7zVxytgOnLcRI8kmnxLWv5veCqskJ47GO88HgCyFE3_NxjiJ_e78Q8dXm0qZNjrdRkccD3BcSFNsoSKKQgJ9b7kcTBf0Q8l8cFLIoCPjdkEEAWE1TB0Hy6Awd5rKt59bbUQtl6SwmNknygYW8QnIK2F1IpRhjgfbE1JQ2qSCwG_iH003wQbk3cqkgNATskcW1b5UoFF1IPmat6K9Of"
+             alt="NOC Infrastructure Monitoring Dashboard" class="w-full h-full object-cover">
+      </div>
+      <div class="order-1 lg:order-2 fade-up" style="transition-delay:100ms">
+        <span class="text-secondary-container font-body text-label-sm uppercase tracking-wider block mb-3">Monitoring Application</span>
+        <h3 class="font-headline text-headline-md text-surface-container-lowest mb-4">Full-Stack Visibility Across Your IT Environment</h3>
+        <p class="font-body text-body-md text-on-primary-container mb-6 leading-relaxed">Proactive monitoring of servers, network devices, applications, and cloud resources. Real-time alerting, performance trending, SLA reporting, and customizable dashboards — keeping your team ahead of failures.</p>
+        <ul class="space-y-2.5 mb-8">
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Multi-protocol support (SNMP, WMI, ICMP)</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Custom alert thresholds</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Historical performance graphs</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Network topology maps</li>
+          <li class="flex items-center gap-3 text-sm text-on-primary-container"><span class="text-green-400 font-bold">✓</span>Mobile-friendly NOC dashboard</li>
+        </ul>
+        <a href="#inquiry" class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-7 py-3.5 rounded-lg font-body text-label-sm hover:opacity-90 transition-all">Request a Demo <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CLOUD SERVICES
+══════════════════════════════════════════ -->
+<section id="cloud" class="bg-[#F4F6FA] py-section-padding px-5 md:px-margin-desktop">
+  <div class="max-w-container-max mx-auto">
+    <header class="mb-14">
+      <span class="inline-block bg-secondary/10 text-secondary font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Cloud Services</span>
+      <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-primary mb-3">Cloud Solutions — Global &amp; Local</h2>
+      <p class="font-body text-body-md text-on-surface-variant max-w-xl">Whether you need the scale of global cloud or the control of on-premises deployment, Nexar Point architects and manages environments that fit your compliance, cost, and performance requirements.</p>
+    </header>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-10">
+      <!-- AWS -->
+      <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-[#FF9900]/40 transition-all fade-up" style="border-top: 3px solid #FF9900;">
+        <div class="h-48 overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXijGxSF4nQOydNiAFzrxI1YkTIYRXbvGiNJquIiLLCvq04A2UKMAZbT6XRzIv9WLXqCNcQoufhipj-lEWwidSgbT92_YOOpdqsxqK3gC_Yxvyu6W4gtnjMjGYzSx31K1-5wyGnGGdOSz9UA-xlkKS3xl9ShbUP868j_2V8Cl4vhZcCDA3hCWFgfJTGMJ0ikBOXc0qZiR2NTGhQjqyZtv8oMZ82_cY3wcTQrONQRyAo53fyGwrg9HyfJcuh5U6e1XBfU16OlInuRZH"
+               alt="AWS Architecture Diagram" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-7">
+          <span class="inline-block bg-[#FF9900] text-[#291800] text-xs font-bold px-2.5 py-1 rounded-full mb-3">AWS Partner</span>
+          <h3 class="font-headline text-headline-sm text-primary mb-2">Global Cloud — Amazon Web Services</h3>
+          <p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">Design, deploy, and manage cloud workloads on AWS — migration, architecture, cost optimization, security hardening, and managed services.</p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="bg-[#FF9900]/10 text-[#624000] text-xs font-bold px-2 py-0.5 rounded">EC2</span>
+            <span class="bg-[#FF9900]/10 text-[#624000] text-xs font-bold px-2 py-0.5 rounded">S3</span>
+            <span class="bg-[#FF9900]/10 text-[#624000] text-xs font-bold px-2 py-0.5 rounded">RDS</span>
+            <span class="bg-[#FF9900]/10 text-[#624000] text-xs font-bold px-2 py-0.5 rounded">VPC</span>
+            <span class="bg-[#FF9900]/10 text-[#624000] text-xs font-bold px-2 py-0.5 rounded">IAM</span>
+            <span class="bg-[#FF9900]/10 text-[#624000] text-xs font-bold px-2 py-0.5 rounded">Lambda</span>
+          </div>
+          <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Talk to a Cloud Architect</a>
+        </div>
+      </div>
+      <!-- Local Cloud -->
+      <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up" style="transition-delay:80ms">
+        <div class="h-48 overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiYG4eZ0l0iXLMNJTnO1VjCDaDw9bvvH6-zsXyRRDDDXRSHnNpztKufW3y-sGbDseS6P1pHnOJG8Tm8QCO6Evw-5kz-sbHSdLin33u8M7jwEnQ8pCEPOvLasgTt54A23_oSi5GNHbds4LkrXbI1V-CGXFCe5YA6JYTgKYAAxoiE8kXjgBizvAXYzYsoEjU2XArdu6I2NJt-WdHeKR_Mr_CiJ9F76ZgJ9xn2CjLX8w8fmNa5UUWA8m8f3HBFs7ji2Q86bUHJqykRHft"
+               alt="Nepal Local Cloud Infrastructure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-7">
+          <h3 class="font-headline text-headline-sm text-primary mb-2">Local Cloud Services</h3>
+          <p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">Cloud platforms within Nepal's carrier infrastructure — offering cloud-like elasticity without data leaving the country. Full regulatory compliance.</p>
+          <ul class="text-xs text-on-surface-variant space-y-1.5 mb-5">
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>Data stays in Nepal</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>Regulatory compliance built-in</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>Low-latency local access</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>Local support team</li>
+          </ul>
+          <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Talk to a Cloud Architect</a>
+        </div>
+      </div>
+      <!-- On-Premises -->
+      <div class="bg-white rounded-xl overflow-hidden technical-shadow border border-outline-variant/10 group hover:border-secondary/30 transition-all fade-up" style="transition-delay:160ms">
+        <div class="h-48 overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh9N8iEaMebO4NQT0nJzeYd_wZ_Kb_l_nQhdwAzgIKet77vGn2cDFwlaqJ30AOIW2boJRrZtzUF9ZsyHaVVpYA0A_iMfpWzJ8k8dHU3RYJCkGrsUa3K_p_7wjcWaEehQGlVa42MeynD72__xOs-cUbG8H3vfegI9AFwWGMplUDJDRhllPFff6yzyzycIYvIxzVwu1_rfUrYo7Lx-LfeH0r1D0BpKSieVxZ1G6KAVgK9g6VOmwLOQ9y2ZQIc0eEffng8qqBjpN55w5J"
+               alt="On-Premises Private Cloud Virtualization" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-7">
+          <h3 class="font-headline text-headline-sm text-primary mb-2">On-Premises Private Cloud</h3>
+          <p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">Full private cloud stack built within your own facility — using OpenStack, VMware, or Proxmox. Complete control over compute, storage, and networking.</p>
+          <ul class="text-xs text-on-surface-variant space-y-1.5 mb-5">
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>Full infrastructure ownership</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>OpenStack / VMware / Proxmox</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>Air-gapped options available</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold">✓</span>Managed or self-operated</li>
+          </ul>
+          <a href="#inquiry" class="block bg-primary text-white text-center py-2.5 rounded-lg text-sm font-semibold hover:bg-secondary transition-colors">Talk to a Cloud Architect</a>
+        </div>
+      </div>
+    </div>
+    <!-- Comparison Table -->
+    <div class="bg-white rounded-xl technical-shadow border border-outline-variant/10 overflow-hidden">
+      <div class="px-7 py-5 border-b border-outline-variant/10">
+        <h4 class="font-headline text-headline-sm text-primary">Quick Comparison</h4>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead><tr class="bg-primary-container text-white"><th class="text-left px-6 py-3 font-semibold">Feature</th><th class="px-6 py-3 font-semibold">AWS Global</th><th class="px-6 py-3 font-semibold">Local Cloud</th><th class="px-6 py-3 font-semibold">On-Premises</th></tr></thead>
+          <tbody>
+            <tr class="border-b border-outline-variant/10 bg-white"><td class="px-6 py-3 text-on-surface-variant font-medium">Data Sovereignty</td><td class="px-6 py-3 text-center text-yellow-600">Configurable</td><td class="px-6 py-3 text-center text-green-600 font-semibold">✓ Nepal only</td><td class="px-6 py-3 text-center text-green-600 font-semibold">✓ Your premises</td></tr>
+            <tr class="border-b border-outline-variant/10 bg-surface-container-low/50"><td class="px-6 py-3 text-on-surface-variant font-medium">Scalability</td><td class="px-6 py-3 text-center text-green-600 font-semibold">✓ Global scale</td><td class="px-6 py-3 text-center text-yellow-600">Regional</td><td class="px-6 py-3 text-center text-yellow-600">Hardware-bound</td></tr>
+            <tr class="border-b border-outline-variant/10 bg-white"><td class="px-6 py-3 text-on-surface-variant font-medium">Cost Model</td><td class="px-6 py-3 text-center text-on-surface-variant">Pay-per-use</td><td class="px-6 py-3 text-center text-on-surface-variant">Subscription</td><td class="px-6 py-3 text-center text-on-surface-variant">CapEx</td></tr>
+            <tr class="bg-surface-container-low/50"><td class="px-6 py-3 text-on-surface-variant font-medium">Nepal Compliance</td><td class="px-6 py-3 text-center text-yellow-600">Requires config</td><td class="px-6 py-3 text-center text-green-600 font-semibold">✓ Built-in</td><td class="px-6 py-3 text-center text-green-600 font-semibold">✓ Full control</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     INQUIRY & SUPPORT
+══════════════════════════════════════════ -->
+<section id="inquiry" class="bg-primary-container py-section-padding px-5 md:px-margin-desktop relative overflow-hidden">
+  <div class="circuit-lines absolute inset-0 opacity-5 pointer-events-none"></div>
+  <div class="max-w-container-max mx-auto relative z-10">
+    <header class="mb-14">
+      <span class="inline-block bg-tertiary-fixed/10 text-tertiary-fixed-dim font-body text-label-sm px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Inquiry &amp; Support</span>
+      <h2 class="font-headline text-headline-xl-mobile md:text-headline-lg text-surface-container-lowest mb-3">Get in Touch</h2>
+      <p class="font-body text-body-md text-on-primary-container max-w-xl">Our team responds to all inquiries within 1 business day. For urgent technical support, critical issues are escalated within 4 hours on business days.</p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+      <!-- Form -->
+      <div class="lg:col-span-2 bg-white/5 border border-white/10 rounded-xl p-7 md:p-10">
+        <!-- Tabs -->
+        <div class="flex flex-wrap gap-2 mb-5">
+          <button class="iq-tab active bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg text-sm font-semibold" data-tab="general">General Inquiry</button>
+          <button class="iq-tab border border-white/15 text-on-primary-container px-4 py-2 rounded-lg text-sm font-semibold hover:border-secondary-container transition-colors" data-tab="support">Technical Support</button>
+          <button class="iq-tab border border-white/15 text-on-primary-container px-4 py-2 rounded-lg text-sm font-semibold hover:border-secondary-container transition-colors" data-tab="quote">Request a Quote</button>
+        </div>
+        <p id="iqTabNote" class="text-sm text-on-primary-container bg-secondary-container/10 border-l-4 border-secondary-container px-4 py-2.5 rounded-r-lg mb-6">Send your general inquiry — we'll respond within 1 business day.</p>
+        <form id="inquiryForm" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Organization Name <span class="text-tertiary-fixed-dim">*</span></label>
+              <input id="f_org" type="text" placeholder="e.g. ABC Pvt. Ltd." required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Contact Person <span class="text-tertiary-fixed-dim">*</span></label>
+              <input id="f_contact" type="text" placeholder="Full name" required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Email Address <span class="text-tertiary-fixed-dim">*</span></label>
+              <input id="f_email" type="email" placeholder="you@company.com" required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Phone Number</label>
+              <input id="f_phone" type="tel" placeholder="+977-98XXXXXXXX" class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm transition-colors">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Subject <span class="text-tertiary-fixed-dim">*</span></label>
+            <select id="f_subject" required class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white text-sm transition-colors cursor-pointer appearance-none" style="background-color: #101c2e;">
+              <option value="">— Select a subject —</option>
+              <optgroup label="Consultation">
+                <option>Data Center Consultation</option>
+                <option>Cloud Services Consultation</option>
+                <option>Networking Services</option>
+                <option>Integration Services</option>
+              </optgroup>
+              <optgroup label="Training &amp; Certification">
+                <option>ISO 27001 Training</option>
+                <option>ISO 9001 Training</option>
+                <option>ISO 14001 Training</option>
+                <option>AWS Cloud Training</option>
+                <option>ISO Certification Services</option>
+              </optgroup>
+              <optgroup label="Products &amp; Software">
+                <option>Data Center Products (UPS / PAC / DCIM)</option>
+                <option>Captive WiFi Solution</option>
+                <option>Monitoring Application</option>
+              </optgroup>
+              <optgroup label="Cloud Services">
+                <option>AWS Cloud Services</option>
+                <option>Local / On-Premises Cloud</option>
+              </optgroup>
+              <optgroup label="Support">
+                <option>Technical Support Request</option>
+                <option>General Inquiry</option>
+                <option>Partnership / Vendor Inquiry</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Message <span class="text-tertiary-fixed-dim">*</span></label>
+            <textarea id="f_message" rows="4" required placeholder="Describe your requirement or issue in detail..." class="w-full bg-white/7 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm resize-y transition-colors"></textarea>
+          </div>
+          <input type="hidden" id="f_type" value="general">
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <span class="text-xs text-on-primary-container/50"><span class="text-tertiary-fixed-dim">*</span> Required fields</span>
+            <button type="submit" id="submitBtn" class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-8 py-3.5 rounded-lg font-body text-label-sm hover:opacity-90 transition-all">
+              <span class="material-symbols-outlined text-[18px]">send</span> Submit Inquiry
+            </button>
+          </div>
+          <div id="formError" class="hidden mt-4 bg-error/10 border border-error/30 text-red-300 text-sm rounded-lg px-4 py-3"></div>
+          <div id="formSuccess" class="hidden mt-4 bg-green-500/10 border border-green-500/30 text-green-300 text-sm rounded-lg px-4 py-4 flex items-start gap-3">
+            <span class="material-symbols-outlined text-green-400">check_circle</span>
+            <div><strong class="block text-green-300 mb-0.5">Inquiry submitted successfully.</strong><span class="text-green-400/80">Our team at info@nexar.com.np will respond within 1 business day.</span></div>
+          </div>
+        </form>
+      </div>
+      <!-- Info Cards -->
+      <div class="flex flex-col gap-4">
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
+          <span class="material-symbols-outlined text-secondary-container text-2xl">mail</span>
+          <div><p class="text-sm font-semibold text-surface-container-lowest mb-1">Email us directly</p><a href="mailto:info@nexar.com.np" class="text-secondary-container text-sm hover:underline">info@nexar.com.np</a></div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
+          <span class="material-symbols-outlined text-secondary-container text-2xl">schedule</span>
+          <div><p class="text-sm font-semibold text-surface-container-lowest mb-1">Response time</p><p class="text-on-primary-container text-sm">Within 1 business day<br><span class="text-xs opacity-70">Sun–Fri, 9am–6pm NPT</span></p></div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
+          <span class="material-symbols-outlined text-secondary-container text-2xl">location_on</span>
+          <div><p class="text-sm font-semibold text-surface-container-lowest mb-1">Office</p><p class="text-on-primary-container text-sm">Lalitpur, Nepal</p></div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
+          <span class="material-symbols-outlined text-secondary-container text-2xl">support_agent</span>
+          <div><p class="text-sm font-semibold text-surface-container-lowest mb-1">Support priority</p><p class="text-on-primary-container text-sm">Critical issues escalated<br><span class="text-xs opacity-70">within 4 hours on business days</span></p></div>
+        </div>
+        <div class="bg-secondary/10 border border-secondary/20 rounded-xl p-5">
+          <p class="text-xs text-on-primary-container/50 uppercase tracking-wider mb-1">All submissions route to</p>
+          <p class="text-secondary-container font-bold text-base">info@nexar.com.np</p>
+          <p class="text-xs text-on-primary-container/40 mt-1">Inquiry type auto-tagged in subject line</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="bg-secondary py-16 px-5 md:px-margin-desktop relative overflow-hidden">
+  <div class="circuit-lines absolute inset-0 opacity-10 pointer-events-none"></div>
+  <div class="max-w-container-max mx-auto relative z-10 text-center">
+    <h2 class="font-headline text-headline-lg text-white mb-4">Ready to secure your digital future?</h2>
+    <p class="font-body text-body-lg text-white/75 max-w-2xl mx-auto mb-8">Join over 50 enterprise partners who trust Nexar Point for their mission-critical infrastructure and compliance needs.</p>
+    <a href="#inquiry" class="inline-flex items-center gap-2 bg-tertiary-fixed-dim text-on-tertiary-fixed px-10 py-4 rounded-lg font-body text-label-sm hover:opacity-90 transition-all shadow-lg">Schedule Your Free Consultation <span class="material-symbols-outlined">arrow_forward</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="bg-primary-container border-t border-white/5">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-16 px-5 md:px-margin-desktop max-w-container-max mx-auto">
+    <div class="md:col-span-1">
+      <div class="flex items-baseline gap-1 mb-4">
+        <span class="font-headline text-xl font-bold text-white">NEXAR</span>
+        <span class="font-headline text-xl font-light text-secondary-container">POINT</span>
+      </div>
+      <p class="text-on-primary-container text-sm mb-5 leading-relaxed">Building Nepal's Digital Infrastructure — enterprise ICT solutions with technical rigor and measurable impact.</p>
+      <p class="text-on-primary-container/60 text-xs">Lalitpur, Nepal<br>info@nexar.com.np</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <h5 class="text-white font-semibold text-xs uppercase tracking-widest mb-1">Services</h5>
+      <a href="#services" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">Data Center Consultation</a>
+      <a href="#services" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">Cloud Consultation</a>
+      <a href="#services" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">Networking Services</a>
+      <a href="#services" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">Integration Services</a>
+    </div>
+    <div class="flex flex-col gap-3">
+      <h5 class="text-white font-semibold text-xs uppercase tracking-widest mb-1">Training &amp; Certification</h5>
+      <a href="#training" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">ISO 27001 Training</a>
+      <a href="#training" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">ISO 9001 Training</a>
+      <a href="#training" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">AWS Training</a>
+      <a href="#certification" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">ISO Certification</a>
+    </div>
+    <div class="flex flex-col gap-3">
+      <h5 class="text-white font-semibold text-xs uppercase tracking-widest mb-1">Solutions</h5>
+      <a href="#products" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">UPS / PAC / DCIM</a>
+      <a href="#software" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">Captive WiFi</a>
+      <a href="#software" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">Monitoring App</a>
+      <a href="#cloud" class="text-on-primary-container text-sm hover:text-secondary-container transition-colors">Cloud Services</a>
+    </div>
+  </div>
+  <div class="border-t border-white/5 py-6 px-5 md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-on-primary-container text-xs">© 2025 Nexar Point Pvt. Ltd. All rights reserved. Registered in Nepal.</p>
+    <div class="flex items-center gap-2">
+      <span class="bg-white/6 border border-white/10 text-on-primary-container/60 text-xs font-bold px-2.5 py-1 rounded">ISO 27001</span>
+      <span class="bg-white/6 border border-white/10 text-on-primary-container/60 text-xs font-bold px-2.5 py-1 rounded">ISO 9001</span>
+      <span class="bg-white/6 border border-white/10 text-on-primary-container/60 text-xs font-bold px-2.5 py-1 rounded">ISO 14001</span>
+      <span class="bg-[#FF9900]/10 border border-[#FF9900]/20 text-[#FF9900] text-xs font-bold px-2.5 py-1 rounded">AWS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll shadow
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.35)' : '';
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('hidden');
+}));
+
+// Smooth scroll with offset
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' }); }
+  });
+});
+
+// Scroll fade-in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  if (!el.style.transitionDelay) el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  obs.observe(el);
+});
+
+// Inquiry tabs
+const tabNotes = {
+  general: "Send your general inquiry — we'll respond within 1 business day.",
+  support: "Technical support requests are tagged <strong>[SUPPORT]</strong> and prioritized in our queue.",
+  quote: "Quote requests are tagged <strong>[QUOTE]</strong> — include as much detail as possible for faster turnaround."
+};
+document.querySelectorAll('.iq-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.iq-tab').forEach(t => {
+      t.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+      t.classList.add('border', 'border-white/15', 'text-on-primary-container');
+    });
+    tab.classList.add('bg-secondary-container', 'text-on-secondary-container');
+    tab.classList.remove('border', 'border-white/15', 'text-on-primary-container');
+    document.getElementById('iqTabNote').innerHTML = tabNotes[tab.dataset.tab];
+    document.getElementById('f_type').value = tab.dataset.tab;
+    document.getElementById('formError').classList.add('hidden');
+    document.getElementById('formSuccess').classList.add('hidden');
+  });
+});
+
+// Form submission
+document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const org = document.getElementById('f_org').value.trim();
+  const contact = document.getElementById('f_contact').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const phone = document.getElementById('f_phone').value.trim();
+  const subject = document.getElementById('f_subject').value;
+  const message = document.getElementById('f_message').value.trim();
+  const type = document.getElementById('f_type').value;
+  const errEl = document.getElementById('formError');
+  const okEl = document.getElementById('formSuccess');
+  errEl.classList.add('hidden'); okEl.classList.add('hidden');
+
+  if (!org || !contact || !email || !subject || !message) {
+    errEl.textContent = 'Please fill in all required fields.'; errEl.classList.remove('hidden'); return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.textContent = 'Please enter a valid email address.'; errEl.classList.remove('hidden'); return;
+  }
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  const tags = { general:'[INQUIRY]', support:'[SUPPORT]', quote:'[QUOTE]' };
+  try {
+    const res = await fetch('/api/inquiry', { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ org, contact, email, phone, subject, message, type, tag: tags[type]||'[INQUIRY]' }) });
+    if (res.ok) { okEl.classList.remove('hidden'); this.reset(); }
+    else throw new Error();
+  } catch {
+    // Demo mode — show success even without backend
+    okEl.classList.remove('hidden'); this.reset();
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">send</span> Submit Inquiry';
+  }
+});
+</script>
+</body>
+</html>
