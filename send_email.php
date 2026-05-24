@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 // Configuration - CHANGE THIS TO YOUR EMAIL
 $to_email = "info@nexar.com.np"; // Your email address
-$from_email = "noreply@nexar.com.np"; // Change to your domain email
+$from_email = "info@nexar.com.np"; // Change to your domain email
 
 // Enable error reporting for debugging (disable in production)
 error_reporting(E_ALL);
