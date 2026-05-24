@@ -1,7 +1,5 @@
 <?php
 header('Content-Type: application/json');
-echo ("hi i am email sender");
-die();
 
 // Configuration - CHANGE THIS TO YOUR EMAIL
 $to_email = "info@nexar.com.np"; // Your email address
