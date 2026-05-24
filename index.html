@@ -646,7 +646,6 @@ tailwind.config = {
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
-
           <thead><tr class="bg-primary-container text-white"><th class="text-left px-6 py-3 font-semibold">Feature</th><th class="px-6 py-3 font-semibold">AWS Global</th><th class="px-6 py-3 font-semibold">Local Cloud</th><th class="px-6 py-3 font-semibold">On-Premises</th></tr></thead>
           <tbody>
             <tr class="border-b border-outline-variant/10 bg-white"><td class="px-6 py-3 text-on-surface-variant font-medium">Data Sovereignty</td><td class="px-6 py-3 text-center text-yellow-600">Configurable</td><td class="px-6 py-3 text-center text-green-600 font-semibold">✓ Nepal only</td><td class="px-6 py-3 text-center text-green-600 font-semibold">✓ Your premises</td></tr>
@@ -683,7 +682,7 @@ tailwind.config = {
         <p id="iqTabNote" class="text-sm text-on-primary-container bg-secondary-container/10 border-l-4 border-secondary-container px-4 py-2.5 rounded-r-lg mb-6">Send your general inquiry — we'll respond within 1 business day.</p>
         
         <!-- UPDATED FORM - Added action and method -->
-        <form id="inquiryForm" action="send_email.php" method="POST" novalidate>
+        <form id="inquiryForm" novalidate>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-xs font-semibold text-on-primary-container uppercase tracking-wider mb-1.5">Organization Name <span class="text-tertiary-fixed-dim">*</span></label>
@@ -709,7 +708,7 @@ tailwind.config = {
             <select id="f_subject" name="subject" required class="w-full bg-white border border-white/20 rounded-lg px-4 py-3 text-on-surface text-sm transition-colors cursor-pointer appearance-none" style="background-color: #ffffff; color: #191c1f;">
               <option value="">— Select a subject —</option>
               <optgroup label="Consultation">
-                <option value="Data Center Consultation">Data Center Consultation</option>
+                <option>Data Center Consultation</option>
                 <option>Cloud Services Consultation</option>
                 <option>Networking Services</option>
                 <option>Integration Services</option>
@@ -805,7 +804,22 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- Inline scripts consolidated at bottom; duplicate handler removed -->
+<script>
+// Tab functionality (keep your existing tab code)
+document.querySelectorAll('.iq-tab').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.iq-tab').forEach(b => b.classList.remove('active', 'bg-secondary-container', 'text-on-secondary-container'));
+        document.querySelectorAll('.iq-tab').forEach(b => b.classList.add('border', 'border-white/15', 'text-on-primary-container'));
+        this.classList.remove('border', 'border-white/15', 'text-on-primary-container');
+        this.classList.add('active', 'bg-secondary-container', 'text-on-secondary-container');
+        const tab = this.getAttribute('data-tab');
+        document.getElementById('f_type').value = tab;
+        const notes = { general: 'Send your general inquiry — we\'ll respond within 1 business day.', support: 'Technical support inquiries — our engineers will respond within 4 hours on business days.', quote: 'Request a quote — we\'ll get back to you within 1 business day with pricing details.' };
+        document.getElementById('iqTabNote').innerText = notes[tab];
+    });
+});
+
+</script>
 
 <!-- CTA BAND -->
 <section class="bg-secondary py-16 px-5 md:px-margin-desktop relative overflow-hidden">
@@ -999,88 +1013,56 @@ document.querySelectorAll('.iq-tab').forEach(tab => {
 });
 
 // Form submission
-
-
-// Form submission - UPDATED to work with PHP backend
 document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const org = document.getElementById('f_org').value.trim();
-    const contact = document.getElementById('f_contact').value.trim();
-    const email = document.getElementById('f_email').value.trim();
-    const phone = document.getElementById('f_phone').value.trim();
-    const subject = document.getElementById('f_subject').value;
-    const message = document.getElementById('f_message').value.trim();
-    const type = document.getElementById('f_type').value;
-    const errEl = document.getElementById('formError');
-    const okEl = document.getElementById('formSuccess');
-    
-    errEl.classList.add('hidden');
-    okEl.classList.add('hidden');
+  e.preventDefault();
+  const org = document.getElementById('f_org').value.trim();
+  const contact = document.getElementById('f_contact').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const phone = document.getElementById('f_phone').value.trim();
+  const subject = document.getElementById('f_subject').value;
+  const message = document.getElementById('f_message').value.trim();
+  const type = document.getElementById('f_type').value;
+  const errEl = document.getElementById('formError');
+  const okEl = document.getElementById('formSuccess');
+  errEl.classList.add('hidden'); okEl.classList.add('hidden');
 
-    // Validation
-    if (!org || !contact || !email || !subject || !message) {
-        errEl.textContent = 'Please fill in all required fields.';
-        errEl.classList.remove('hidden');
-        return;
+  if (!org || !contact || !email || !subject || !message) {
+    errEl.textContent = 'Please fill in all required fields.'; errEl.classList.remove('hidden'); return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.textContent = 'Please enter a valid email address.'; errEl.classList.remove('hidden'); return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  const originalBtnHTML = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> Sending...';
+
+  const tags = { general:'[INQUIRY]', support:'[SUPPORT]', quote:'[QUOTE]' };
+
+  try {
+    const res = await fetch('https://nexar-inquiry.mruby-sah.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ org, contact, email, phone, subject, message, type, tag: tags[type] || '[INQUIRY]' })
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok && data.success) {
+      okEl.classList.remove('hidden');
+      this.reset();
+      document.getElementById('f_type').value = 'general';
+      setTimeout(() => okEl.classList.add('hidden'), 5000);
+    } else {
+      throw new Error(data.error || 'Failed to send inquiry.');
     }
-    
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errEl.textContent = 'Please enter a valid email address.';
-        errEl.classList.remove('hidden');
-        return;
-    }
-    
-    const btn = document.getElementById('submitBtn');
-    const originalText = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> Sending...';
-    
-    try {
-        // Create FormData object for PHP
-        const formData = new FormData();
-        formData.append('org', org);
-        formData.append('contact', contact);
-        formData.append('email', email);
-        formData.append('phone', phone);
-        formData.append('subject', subject);
-        formData.append('message', message);
-        formData.append('type', type);
-        
-        // Send to PHP backend
-        const res = await fetch('send_email.php', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const data = await res.json();
-        
-        if (data.success) {
-            okEl.classList.remove('hidden');
-            this.reset();
-            // Reset tab to general
-            document.getElementById('f_type').value = 'general';
-            // Scroll to success message
-            okEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                okEl.classList.add('hidden');
-            }, 5000);
-        } else {
-            errEl.textContent = data.error || 'Failed to send inquiry. Please try again.';
-            errEl.classList.remove('hidden');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        errEl.textContent = 'Network error. Please check your connection or contact us directly at info@nexar.com.np';
-        errEl.classList.remove('hidden');
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-    }
+  } catch (error) {
+    errEl.textContent = error.message || 'Network error. Please check your connection or contact us directly at info@nexar.com.np';
+    errEl.classList.remove('hidden');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalBtnHTML;
+  }
 });
-
-
 </script>
 </body>
-</html>
+</html> 
