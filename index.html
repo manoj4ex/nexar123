@@ -1041,7 +1041,7 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
   const tags = { general:'[INQUIRY]', support:'[SUPPORT]', quote:'[QUOTE]' };
 
   try {
-    const res = await fetch('https://nexar-inquiry.mruby-sah.workers.dev', {
+    const res = await fetch('https://nexar-inquiry.YOUR_SUBDOMAIN.workers.dev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ org, contact, email, phone, subject, message, type, tag: tags[type] || '[INQUIRY]' })
