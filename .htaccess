@@ -1,0 +1,12 @@
+# Prevent direct access to PHP files
+<Files "send_email.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Enable PHP error logging (disable in production)
+php_flag log_errors on
+php_value error_log "error_log.txt"
+
+# Prevent directory listing
+Options -Indexes
