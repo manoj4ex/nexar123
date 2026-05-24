@@ -1,5 +1,7 @@
 <?php
 header('Content-Type: application/json');
+echo ("hi i am email sender");
+die();
 
 // Configuration - CHANGE THIS TO YOUR EMAIL
 $to_email = "info@nexar.com.np"; // Your email address
@@ -33,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = isset($_POST['subject']) ? sanitize_input($_POST['subject']) : '';
     $message = isset($_POST['message']) ? sanitize_input($_POST['message']) : '';
     $type = isset($_POST['type']) ? sanitize_input($_POST['type']) : '';
-    var_dump($type);
+    //var_dump($type);
     // Validate required fields
     $errors = array();
     
