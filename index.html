@@ -829,6 +829,7 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
     submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> Sending...';
     submitBtn.disabled = true;
     
+<<<<<<< HEAD
     const formData = new FormData(this);
     
     try {
@@ -839,6 +840,19 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
         
         const result = await response.json();
         
+=======
+    const fields = Object.fromEntries(new FormData(this));
+
+    try {
+        const response = await fetch('/api/inquiry', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(fields)
+        });
+
+        const result = await response.json();
+
+>>>>>>> 9aaba81 (Save local changes before pull)
         if (result.success) {
             document.getElementById('formSuccess').classList.remove('hidden');
             document.getElementById('formError').classList.add('hidden');
@@ -849,12 +863,20 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
                 document.getElementById('formSuccess').classList.add('hidden');
             }, 5000);
         } else {
+<<<<<<< HEAD
             document.getElementById('formError').textContent = result.message || 'Failed to send message. Please try again.';
+=======
+            document.getElementById('formError').textContent = result.error || result.message || 'Failed to send message. Please try again.';
+>>>>>>> 9aaba81 (Save local changes before pull)
             document.getElementById('formError').classList.remove('hidden');
             document.getElementById('formSuccess').classList.add('hidden');
         }
     } catch (error) {
+<<<<<<< HEAD
         document.getElementById('formError').textContent = 'Network error. Please check your connection and try again.';
+=======
+        document.getElementById('formError').textContent = 'Network error. Please check your connection or contact us directly at info@nexar.com.np';
+>>>>>>> 9aaba81 (Save local changes before pull)
         document.getElementById('formError').classList.remove('hidden');
         document.getElementById('formSuccess').classList.add('hidden');
     } finally {
