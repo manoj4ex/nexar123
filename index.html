@@ -1067,7 +1067,7 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
         }
     } catch (error) {
         console.error('Error:', error);
-        errEl.textContent = 'Network error. Please check your connection or contact us directly at info@nexar.com.np';
+        errEl.textContent = error.message || 'Network error. Please check your connection or contact us directly at info@nexar.com.np';
         errEl.classList.remove('hidden');
     } finally {
         btn.disabled = false;
