@@ -1,4 +1,4 @@
-**
+/**
  * NEXAR POINT — BACKEND EMAIL SERVER (DARK THEME)
  * Node.js + Express + Nodemailer
  *
@@ -30,21 +30,29 @@ app.use(cors());
 app.use(express.static('.'));
 
 // ---------------- EMAIL TRANSPORTER ----------------
+const port = parseInt(process.env.MAIL_PORT) || 587;
+const secure = (process.env.MAIL_SECURE === 'true') || port === 465;
 const transporter = nodemailer.createTransport({
   host: process.env.MAIL_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.MAIL_PORT) || 587,
-  secure: false,
+  port,
+  secure,
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS
+  },
+  tls: {
+    rejectUnauthorized: process.env.NODE_ENV === 'production'
   }
 });
 
+// Verify transporter at startup
+transporter.verify().then(() => console.log('SMTP transporter configured')).catch(err => console.warn('SMTP transporter verify failed:', err && err.message));
+
 // ---------------- INQUIRY ENDPOINT ----------------
 app.post('/api/inquiry', async (req, res) => {
-  if (!process.env.MAIL_USER || !process.env.MAIL_PASS || process.env.MAIL_PASS === 'YOUR_PASSWORD' || process.env.MAIL_PASS === 'YOUR_GMAIL_APP_PASSWORD') {
+  if (!process.env.MAIL_USER || !process.env.MAIL_PASS) {
     return res.status(500).json({
-      error: 'Email is not configured. Set MAIL_USER and a real Gmail app password in MAIL_PASS, then restart the server.'
+      error: 'Email is not configured. Set MAIL_HOST, MAIL_PORT, MAIL_USER and MAIL_PASS in environment.'
     });
   }
 

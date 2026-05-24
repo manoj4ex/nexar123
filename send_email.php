@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 // Configuration - CHANGE THIS TO YOUR EMAIL
 $to_email = "info@nexar.com.np"; // Your email address
-$from_email = "info@nexar.com.np"; // Change to your domain email
+$from_email = "noreply@nexar.com.np"; // Change to your domain email
 
 // Enable error reporting for debugging (disable in production)
 error_reporting(E_ALL);
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = isset($_POST['subject']) ? sanitize_input($_POST['subject']) : '';
     $message = isset($_POST['message']) ? sanitize_input($_POST['message']) : '';
     $type = isset($_POST['type']) ? sanitize_input($_POST['type']) : '';
-    //var_dump($type);
+
     // Validate required fields
     $errors = array();
     
